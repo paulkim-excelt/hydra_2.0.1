@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<swr_config>
+    <mmi paddr="1" raddr="3" value="5171"/>
+    <mmi paddr="1" raddr="7" value="0029"/>
+    <mmi paddr="1" raddr="8" value="C03"/>
+    <mmi paddr="1" raddr="9" value="F71"/>
+    <mmi paddr="1" raddr="0" value="C692"/>
+    <mmi paddr="1" raddr="0" value="C690"/>
+    <mmi paddr="2" raddr="3" value="5170"/>
+    <mmi paddr="2" raddr="7" value="0029"/>
+    <mmi paddr="2" raddr="8" value="C03"/>
+    <mmi paddr="2" raddr="9" value="F71"/>
+    <mmi paddr="2" raddr="0" value="C692"/>
+    <mmi paddr="2" raddr="0" value="C690"/>
+    <mmi paddr="3" raddr="3" value="5170"/>
+    <mmi paddr="3" raddr="7" value="0029"/>
+    <mmi paddr="3" raddr="8" value="0C03"/>
+    <mmi paddr="3" raddr="9" value="0F71"/>
+    <mmi paddr="3" raddr="0" value="C692"/>
+    <mmi paddr="3" raddr="0" value="C690"/>
+</swr_config>

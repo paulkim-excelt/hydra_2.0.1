@@ -1,0 +1,10 @@
+width = 1280
+height = 720
+framerate = 60
+bitrate = 50000000
+profile = 66
+level = 51
+numcores = 2
+minqp = 12
+maxqp = 44
+SliceRows = 0,5,10,15,20,25,30,35,40,45,50,55,60,65,70

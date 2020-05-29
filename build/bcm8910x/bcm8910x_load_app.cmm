@@ -1,0 +1,37 @@
+Reset
+sys.option ENRESET off
+SYStem.JtagClock 5000khz
+
+SYStem.CONFIG  MEMORYACCESSPORT 0
+SYStem.CONFIG  DEBUGACCESSPORT  1
+
+SYStem.CPU CortexM7
+
+SYStem.CONFIG DAPIRPOST 1F
+SYStem.CONFIG DAPDRPOST  1
+SYStem.CONFIG DAPIRPRE 0
+SYStem.CONFIG DAPDRPRE 0
+
+sys.mode.attach
+if state.run()
+(
+break
+)
+
+SYStem.MemAccess DAP
+SYStem.Option DUALPORT ON
+
+;break.delete /ALL
+
+wait 1s
+
+D.S 0xE010200C %LE %Long 0x100
+
+d.load.elf APPLICATION_ELF_NAME  /GNU /STRIPPART 3 /PATH X:\ 
+
+r.s pc EE_cortex_mx_default_reset_ISR
+
+go
+
+
+

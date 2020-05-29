@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name ="Hex64StringType">
+        <xs:restriction base = "xs:string">
+            <xs:pattern value = "0x[0-9A-Fa-f]{16}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name ="Hex32StringType">
+        <xs:restriction base = "xs:string">
+            <xs:pattern value = "0x[0-9A-Fa-f]{8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name ="udpLocalPortNumber">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base='xs:unsignedShort'>
+                    <xs:minInclusive value="0"/>
+                    <xs:maxInclusive value="39999"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base='xs:unsignedShort'>
+                    <xs:minInclusive value="41000"/>
+                    <xs:maxInclusive value="65535"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    <xs:simpleType name="IPv4Address">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="((1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.){3}(1?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "payloadFormatType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "FORMAT_UNDEFINED"/>
+            <xs:enumeration value = "FORMAT_FU_A_SLICE"/>
+            <xs:enumeration value = "FORMAT_MPEGTS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "mediaFormatType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "H264_VIDEO"/>
+            <xs:enumeration value = "PCM_AUDIO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "udpPayloadIDType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "ID_0"/>
+            <xs:enumeration value = "ID_1"/>
+            <xs:enumeration value = "ID_2"/>
+            <xs:enumeration value = "ID_3"/>
+            <xs:enumeration value = "ID_4"/>
+            <xs:enumeration value = "ID_5"/>
+            <xs:enumeration value = "ID_6"/>
+            <xs:enumeration value = "ID_7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "isRTCPEnabledType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "RTCP_ENABLED"/>
+            <xs:enumeration value = "RTCP_DISABLED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "cnameStrType">
+        <xs:restriction base = "xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "name1733StrType">
+        <xs:restriction base = "xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name = "rtcpParamsType">
+        <xs:sequence>
+            <xs:element
+                name = "isRTCPEnabled" type = "isRTCPEnabledType"
+                />
+            <xs:element
+                name = "rtcpPayloadID" type = "udpPayloadIDType"
+                />
+            <xs:element
+                name = "cnameStr" type = "cnameStrType"
+                />
+            <xs:element
+                name = "name1733Str" type = "name1733StrType"
+                />
+            <xs:element
+                name = "streamID" type = "Hex64StringType"
+                />
+            <xs:element
+                name = "localPort" type = "udpLocalPortNumber"
+                />
+            <xs:element
+                name = "remotePort" type = "xs:unsignedShort"
+                />
+            <xs:element
+                name = "remoteIP" type = "IPv4Address"
+                />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name = "rtpParamsType">
+        <xs:sequence>
+            <xs:element
+                name = "mediaFormat" type = "mediaFormatType"
+                />
+            <xs:element
+                name = "SSRC" type = "Hex32StringType"
+                />
+            <xs:element
+                name = "payloadFormat" type = "payloadFormatType"
+                />
+            <xs:element
+                name = "rtpPayloadID" type = "udpPayloadIDType"
+                />
+            <xs:element
+                name = "localPort" type = "udpLocalPortNumber"
+                />
+            <xs:element
+                name = "remotePort" type = "xs:unsignedShort"
+                />
+            <xs:element
+                name = "remoteIP" type = "IPv4Address"
+                />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name = "rtp_portType">
+        <xs:sequence>
+            <xs:element
+                name = "rtpParams" type = "rtpParamsType"
+                />
+            <xs:element
+                name = "rtcpParams" type = "rtcpParamsType"
+                />
+        </xs:sequence>
+    </xs:complexType>
+
+<xs:element name="rtps_cfg">
+  <xs:complexType>
+    <xs:sequence>
+        <xs:element
+            name = "rtp_port"
+            type = "rtp_portType"
+            minOccurs = "1"
+            maxOccurs= "4"
+            />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

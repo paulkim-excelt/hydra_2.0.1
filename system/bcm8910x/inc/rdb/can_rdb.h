@@ -1,0 +1,956 @@
+/*****************************************************************************
+ Copyright 2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+******************************************************************************/
+/**
+    @file can_rdb.h
+    @brief RDB File for CAN
+
+    @version 2018May25_rdb
+*/
+
+#ifndef CAN_RDB_H
+#define CAN_RDB_H
+
+#include <stdint.h>
+
+#include <compiler.h>
+
+
+typedef uint32_t CAN_0_RAM_TYPE;
+#define CAN_0_RAM_RAM_MASK (0xffffffffUL)
+#define CAN_0_RAM_RAM_SHIFT (0UL)
+
+
+
+
+typedef uint8_t CAN_RESERVED_TYPE;
+
+
+
+
+typedef uint32_t CAN_0_CREL_TYPE;
+#define CAN_0_CREL_REL_MASK (0xf0000000UL)
+#define CAN_0_CREL_REL_SHIFT (28UL)
+#define CAN_0_CREL_STEP_MASK (0xf000000UL)
+#define CAN_0_CREL_STEP_SHIFT (24UL)
+#define CAN_0_CREL_SUBSTEP_MASK (0xf00000UL)
+#define CAN_0_CREL_SUBSTEP_SHIFT (20UL)
+#define CAN_0_CREL_YEAR_MASK (0xf0000UL)
+#define CAN_0_CREL_YEAR_SHIFT (16UL)
+#define CAN_0_CREL_MON_MASK (0xff00UL)
+#define CAN_0_CREL_MON_SHIFT (8UL)
+#define CAN_0_CREL_DAY_MASK (0xffUL)
+#define CAN_0_CREL_DAY_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_ENDN_TYPE;
+#define CAN_0_ENDN_ETV_MASK (0xffffffffUL)
+#define CAN_0_ENDN_ETV_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_CUST_TYPE;
+#define CAN_0_CUST_CSV_MASK (0xffffffffUL)
+#define CAN_0_CUST_CSV_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_DBTP_TYPE;
+#define CAN_0_DBTP_TDC_MASK (0x800000UL)
+#define CAN_0_DBTP_TDC_SHIFT (23UL)
+#define CAN_0_DBTP_DBRP_MASK (0x1f0000UL)
+#define CAN_0_DBTP_DBRP_SHIFT (16UL)
+#define CAN_0_DBTP_DTSEG1_MASK (0x1f00UL)
+#define CAN_0_DBTP_DTSEG1_SHIFT (8UL)
+#define CAN_0_DBTP_DTSEG2_MASK (0xf0UL)
+#define CAN_0_DBTP_DTSEG2_SHIFT (4UL)
+#define CAN_0_DBTP_DSJW_MASK (0xfUL)
+#define CAN_0_DBTP_DSJW_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TEST_TYPE;
+#define CAN_0_TEST_RX_MASK (0x80UL)
+#define CAN_0_TEST_RX_SHIFT (7UL)
+#define CAN_0_TEST_TX_MASK (0x60UL)
+#define CAN_0_TEST_TX_SHIFT (5UL)
+#define CAN_0_TEST_LBCK_MASK (0x10UL)
+#define CAN_0_TEST_LBCK_SHIFT (4UL)
+
+
+
+
+typedef uint32_t CAN_0_RWD_TYPE;
+#define CAN_0_RWD_WDV_MASK (0xff00UL)
+#define CAN_0_RWD_WDV_SHIFT (8UL)
+#define CAN_0_RWD_WDC_MASK (0xffUL)
+#define CAN_0_RWD_WDC_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_CCCR_TYPE;
+#define CAN_0_CCCR_NISO_MASK (0x8000UL)
+#define CAN_0_CCCR_NISO_SHIFT (15UL)
+#define CAN_0_CCCR_TXP_MASK (0x4000UL)
+#define CAN_0_CCCR_TXP_SHIFT (14UL)
+#define CAN_0_CCCR_EFBI_MASK (0x2000UL)
+#define CAN_0_CCCR_EFBI_SHIFT (13UL)
+#define CAN_0_CCCR_PXHD_MASK (0x1000UL)
+#define CAN_0_CCCR_PXHD_SHIFT (12UL)
+#define CAN_0_CCCR_BRSE_MASK (0x200UL)
+#define CAN_0_CCCR_BRSE_SHIFT (9UL)
+#define CAN_0_CCCR_FDOE_MASK (0x100UL)
+#define CAN_0_CCCR_FDOE_SHIFT (8UL)
+#define CAN_0_CCCR_TEST_MASK (0x80UL)
+#define CAN_0_CCCR_TEST_SHIFT (7UL)
+#define CAN_0_CCCR_DAR_MASK (0x40UL)
+#define CAN_0_CCCR_DAR_SHIFT (6UL)
+#define CAN_0_CCCR_MON_MASK (0x20UL)
+#define CAN_0_CCCR_MON_SHIFT (5UL)
+#define CAN_0_CCCR_CSR_MASK (0x10UL)
+#define CAN_0_CCCR_CSR_SHIFT (4UL)
+#define CAN_0_CCCR_CSA_MASK (0x8UL)
+#define CAN_0_CCCR_CSA_SHIFT (3UL)
+#define CAN_0_CCCR_ASM_MASK (0x4UL)
+#define CAN_0_CCCR_ASM_SHIFT (2UL)
+#define CAN_0_CCCR_CCE_MASK (0x2UL)
+#define CAN_0_CCCR_CCE_SHIFT (1UL)
+#define CAN_0_CCCR_INIT_MASK (0x1UL)
+#define CAN_0_CCCR_INIT_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_NBTP_TYPE;
+#define CAN_0_NBTP_NSJW_MASK (0xfe000000UL)
+#define CAN_0_NBTP_NSJW_SHIFT (25UL)
+#define CAN_0_NBTP_NBRP_MASK (0x1ff0000UL)
+#define CAN_0_NBTP_NBRP_SHIFT (16UL)
+#define CAN_0_NBTP_NTSEG1_MASK (0xff00UL)
+#define CAN_0_NBTP_NTSEG1_SHIFT (8UL)
+#define CAN_0_NBTP_NTSEG2_MASK (0x7fUL)
+#define CAN_0_NBTP_NTSEG2_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TSCC_TYPE;
+#define CAN_0_TSCC_TCP_MASK (0xf0000UL)
+#define CAN_0_TSCC_TCP_SHIFT (16UL)
+#define CAN_0_TSCC_TSS_MASK (0x3UL)
+#define CAN_0_TSCC_TSS_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TSCV_TYPE;
+#define CAN_0_TSCV_TSC_MASK (0xffffUL)
+#define CAN_0_TSCV_TSC_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TOCC_TYPE;
+#define CAN_0_TOCC_TOP_MASK (0xffff0000UL)
+#define CAN_0_TOCC_TOP_SHIFT (16UL)
+#define CAN_0_TOCC_TOS_MASK (0x6UL)
+#define CAN_0_TOCC_TOS_SHIFT (1UL)
+#define CAN_0_TOCC_ETOC_MASK (0x1UL)
+#define CAN_0_TOCC_ETOC_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TOCV_TYPE;
+#define CAN_0_TOCV_TOC_MASK (0xffffUL)
+#define CAN_0_TOCV_TOC_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_ECR_TYPE;
+#define CAN_0_ECR_CEL_MASK (0xff0000UL)
+#define CAN_0_ECR_CEL_SHIFT (16UL)
+#define CAN_0_ECR_RP_MASK (0x8000UL)
+#define CAN_0_ECR_RP_SHIFT (15UL)
+#define CAN_0_ECR_REC_MASK (0x7f00UL)
+#define CAN_0_ECR_REC_SHIFT (8UL)
+#define CAN_0_ECR_TEC_MASK (0xffUL)
+#define CAN_0_ECR_TEC_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_PSR_TYPE;
+#define CAN_0_PSR_TDCV_MASK (0x7f0000UL)
+#define CAN_0_PSR_TDCV_SHIFT (16UL)
+#define CAN_0_PSR_PXE_MASK (0x4000UL)
+#define CAN_0_PSR_PXE_SHIFT (14UL)
+#define CAN_0_PSR_RFDF_MASK (0x2000UL)
+#define CAN_0_PSR_RFDF_SHIFT (13UL)
+#define CAN_0_PSR_RBRS_MASK (0x1000UL)
+#define CAN_0_PSR_RBRS_SHIFT (12UL)
+#define CAN_0_PSR_RESI_MASK (0x800UL)
+#define CAN_0_PSR_RESI_SHIFT (11UL)
+#define CAN_0_PSR_DLEC_MASK (0x700UL)
+#define CAN_0_PSR_DLEC_SHIFT (8UL)
+#define CAN_0_PSR_BO_MASK (0x80UL)
+#define CAN_0_PSR_BO_SHIFT (7UL)
+#define CAN_0_PSR_EW_MASK (0x40UL)
+#define CAN_0_PSR_EW_SHIFT (6UL)
+#define CAN_0_PSR_EP_MASK (0x20UL)
+#define CAN_0_PSR_EP_SHIFT (5UL)
+#define CAN_0_PSR_ACT_MASK (0x18UL)
+#define CAN_0_PSR_ACT_SHIFT (3UL)
+#define CAN_0_PSR_LEC_MASK (0x7UL)
+#define CAN_0_PSR_LEC_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TDCR_TYPE;
+#define CAN_0_TDCR_TDCO_MASK (0x7f00UL)
+#define CAN_0_TDCR_TDCO_SHIFT (8UL)
+#define CAN_0_TDCR_TDCF_MASK (0x7fUL)
+#define CAN_0_TDCR_TDCF_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_IR_TYPE;
+#define CAN_0_IR_ARA_MASK (0x20000000UL)
+#define CAN_0_IR_ARA_SHIFT (29UL)
+#define CAN_0_IR_PED_MASK (0x10000000UL)
+#define CAN_0_IR_PED_SHIFT (28UL)
+#define CAN_0_IR_PEA_MASK (0x8000000UL)
+#define CAN_0_IR_PEA_SHIFT (27UL)
+#define CAN_0_IR_WDI_MASK (0x4000000UL)
+#define CAN_0_IR_WDI_SHIFT (26UL)
+#define CAN_0_IR_BO_MASK (0x2000000UL)
+#define CAN_0_IR_BO_SHIFT (25UL)
+#define CAN_0_IR_EW_MASK (0x1000000UL)
+#define CAN_0_IR_EW_SHIFT (24UL)
+#define CAN_0_IR_EP_MASK (0x800000UL)
+#define CAN_0_IR_EP_SHIFT (23UL)
+#define CAN_0_IR_ELO_MASK (0x400000UL)
+#define CAN_0_IR_ELO_SHIFT (22UL)
+#define CAN_0_IR_BEU_MASK (0x200000UL)
+#define CAN_0_IR_BEU_SHIFT (21UL)
+#define CAN_0_IR_BEC_MASK (0x100000UL)
+#define CAN_0_IR_BEC_SHIFT (20UL)
+#define CAN_0_IR_DRX_MASK (0x80000UL)
+#define CAN_0_IR_DRX_SHIFT (19UL)
+#define CAN_0_IR_TOO_MASK (0x40000UL)
+#define CAN_0_IR_TOO_SHIFT (18UL)
+#define CAN_0_IR_MRAF_MASK (0x20000UL)
+#define CAN_0_IR_MRAF_SHIFT (17UL)
+#define CAN_0_IR_TSW_MASK (0x10000UL)
+#define CAN_0_IR_TSW_SHIFT (16UL)
+#define CAN_0_IR_TEFL_MASK (0x8000UL)
+#define CAN_0_IR_TEFL_SHIFT (15UL)
+#define CAN_0_IR_TEFF_MASK (0x4000UL)
+#define CAN_0_IR_TEFF_SHIFT (14UL)
+#define CAN_0_IR_TEFW_MASK (0x2000UL)
+#define CAN_0_IR_TEFW_SHIFT (13UL)
+#define CAN_0_IR_TEFN_MASK (0x1000UL)
+#define CAN_0_IR_TEFN_SHIFT (12UL)
+#define CAN_0_IR_TFE_MASK (0x800UL)
+#define CAN_0_IR_TFE_SHIFT (11UL)
+#define CAN_0_IR_TCF_MASK (0x400UL)
+#define CAN_0_IR_TCF_SHIFT (10UL)
+#define CAN_0_IR_TC_MASK (0x200UL)
+#define CAN_0_IR_TC_SHIFT (9UL)
+#define CAN_0_IR_HPM_MASK (0x100UL)
+#define CAN_0_IR_HPM_SHIFT (8UL)
+#define CAN_0_IR_RF1L_MASK (0x80UL)
+#define CAN_0_IR_RF1L_SHIFT (7UL)
+#define CAN_0_IR_RF1F_MASK (0x40UL)
+#define CAN_0_IR_RF1F_SHIFT (6UL)
+#define CAN_0_IR_RF1W_MASK (0x20UL)
+#define CAN_0_IR_RF1W_SHIFT (5UL)
+#define CAN_0_IR_RF1N_MASK (0x10UL)
+#define CAN_0_IR_RF1N_SHIFT (4UL)
+#define CAN_0_IR_RF0L_MASK (0x8UL)
+#define CAN_0_IR_RF0L_SHIFT (3UL)
+#define CAN_0_IR_RF0F_MASK (0x4UL)
+#define CAN_0_IR_RF0F_SHIFT (2UL)
+#define CAN_0_IR_RF0W_MASK (0x2UL)
+#define CAN_0_IR_RF0W_SHIFT (1UL)
+#define CAN_0_IR_RF0N_MASK (0x1UL)
+#define CAN_0_IR_RF0N_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_IE_TYPE;
+#define CAN_0_IE_ARAE_MASK (0x20000000UL)
+#define CAN_0_IE_ARAE_SHIFT (29UL)
+#define CAN_0_IE_PEDE_MASK (0x10000000UL)
+#define CAN_0_IE_PEDE_SHIFT (28UL)
+#define CAN_0_IE_PEAE_MASK (0x8000000UL)
+#define CAN_0_IE_PEAE_SHIFT (27UL)
+#define CAN_0_IE_WDIE_MASK (0x4000000UL)
+#define CAN_0_IE_WDIE_SHIFT (26UL)
+#define CAN_0_IE_BOE_MASK (0x2000000UL)
+#define CAN_0_IE_BOE_SHIFT (25UL)
+#define CAN_0_IE_EWE_MASK (0x1000000UL)
+#define CAN_0_IE_EWE_SHIFT (24UL)
+#define CAN_0_IE_EPE_MASK (0x800000UL)
+#define CAN_0_IE_EPE_SHIFT (23UL)
+#define CAN_0_IE_ELOE_MASK (0x400000UL)
+#define CAN_0_IE_ELOE_SHIFT (22UL)
+#define CAN_0_IE_BEUE_MASK (0x200000UL)
+#define CAN_0_IE_BEUE_SHIFT (21UL)
+#define CAN_0_IE_BECE_MASK (0x100000UL)
+#define CAN_0_IE_BECE_SHIFT (20UL)
+#define CAN_0_IE_DRXE_MASK (0x80000UL)
+#define CAN_0_IE_DRXE_SHIFT (19UL)
+#define CAN_0_IE_TOOE_MASK (0x40000UL)
+#define CAN_0_IE_TOOE_SHIFT (18UL)
+#define CAN_0_IE_MRAFE_MASK (0x20000UL)
+#define CAN_0_IE_MRAFE_SHIFT (17UL)
+#define CAN_0_IE_TSWE_MASK (0x10000UL)
+#define CAN_0_IE_TSWE_SHIFT (16UL)
+#define CAN_0_IE_TEFLE_MASK (0x8000UL)
+#define CAN_0_IE_TEFLE_SHIFT (15UL)
+#define CAN_0_IE_TEFFE_MASK (0x4000UL)
+#define CAN_0_IE_TEFFE_SHIFT (14UL)
+#define CAN_0_IE_TEFWE_MASK (0x2000UL)
+#define CAN_0_IE_TEFWE_SHIFT (13UL)
+#define CAN_0_IE_TEFNE_MASK (0x1000UL)
+#define CAN_0_IE_TEFNE_SHIFT (12UL)
+#define CAN_0_IE_TFEE_MASK (0x800UL)
+#define CAN_0_IE_TFEE_SHIFT (11UL)
+#define CAN_0_IE_TCFE_MASK (0x400UL)
+#define CAN_0_IE_TCFE_SHIFT (10UL)
+#define CAN_0_IE_TCE_MASK (0x200UL)
+#define CAN_0_IE_TCE_SHIFT (9UL)
+#define CAN_0_IE_HPME_MASK (0x100UL)
+#define CAN_0_IE_HPME_SHIFT (8UL)
+#define CAN_0_IE_RF1LE_MASK (0x80UL)
+#define CAN_0_IE_RF1LE_SHIFT (7UL)
+#define CAN_0_IE_RF1FE_MASK (0x40UL)
+#define CAN_0_IE_RF1FE_SHIFT (6UL)
+#define CAN_0_IE_RF1WE_MASK (0x20UL)
+#define CAN_0_IE_RF1WE_SHIFT (5UL)
+#define CAN_0_IE_RF1NE_MASK (0x10UL)
+#define CAN_0_IE_RF1NE_SHIFT (4UL)
+#define CAN_0_IE_RF0LE_MASK (0x8UL)
+#define CAN_0_IE_RF0LE_SHIFT (3UL)
+#define CAN_0_IE_RF0FE_MASK (0x4UL)
+#define CAN_0_IE_RF0FE_SHIFT (2UL)
+#define CAN_0_IE_RF0WE_MASK (0x2UL)
+#define CAN_0_IE_RF0WE_SHIFT (1UL)
+#define CAN_0_IE_RF0NE_MASK (0x1UL)
+#define CAN_0_IE_RF0NE_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_ILS_TYPE;
+#define CAN_0_ILS_ARAL_MASK (0x20000000UL)
+#define CAN_0_ILS_ARAL_SHIFT (29UL)
+#define CAN_0_ILS_PEDL_MASK (0x10000000UL)
+#define CAN_0_ILS_PEDL_SHIFT (28UL)
+#define CAN_0_ILS_PEAL_MASK (0x8000000UL)
+#define CAN_0_ILS_PEAL_SHIFT (27UL)
+#define CAN_0_ILS_WDIL_MASK (0x4000000UL)
+#define CAN_0_ILS_WDIL_SHIFT (26UL)
+#define CAN_0_ILS_BOL_MASK (0x2000000UL)
+#define CAN_0_ILS_BOL_SHIFT (25UL)
+#define CAN_0_ILS_EWL_MASK (0x1000000UL)
+#define CAN_0_ILS_EWL_SHIFT (24UL)
+#define CAN_0_ILS_EPL_MASK (0x800000UL)
+#define CAN_0_ILS_EPL_SHIFT (23UL)
+#define CAN_0_ILS_ELOL_MASK (0x400000UL)
+#define CAN_0_ILS_ELOL_SHIFT (22UL)
+#define CAN_0_ILS_BEUL_MASK (0x200000UL)
+#define CAN_0_ILS_BEUL_SHIFT (21UL)
+#define CAN_0_ILS_BECL_MASK (0x100000UL)
+#define CAN_0_ILS_BECL_SHIFT (20UL)
+#define CAN_0_ILS_DRXL_MASK (0x80000UL)
+#define CAN_0_ILS_DRXL_SHIFT (19UL)
+#define CAN_0_ILS_TOOL_MASK (0x40000UL)
+#define CAN_0_ILS_TOOL_SHIFT (18UL)
+#define CAN_0_ILS_MRAFL_MASK (0x20000UL)
+#define CAN_0_ILS_MRAFL_SHIFT (17UL)
+#define CAN_0_ILS_TSWL_MASK (0x10000UL)
+#define CAN_0_ILS_TSWL_SHIFT (16UL)
+#define CAN_0_ILS_TEFLL_MASK (0x8000UL)
+#define CAN_0_ILS_TEFLL_SHIFT (15UL)
+#define CAN_0_ILS_TEFFL_MASK (0x4000UL)
+#define CAN_0_ILS_TEFFL_SHIFT (14UL)
+#define CAN_0_ILS_TEFWL_MASK (0x2000UL)
+#define CAN_0_ILS_TEFWL_SHIFT (13UL)
+#define CAN_0_ILS_TEFNL_MASK (0x1000UL)
+#define CAN_0_ILS_TEFNL_SHIFT (12UL)
+#define CAN_0_ILS_TFEL_MASK (0x800UL)
+#define CAN_0_ILS_TFEL_SHIFT (11UL)
+#define CAN_0_ILS_TCFL_MASK (0x400UL)
+#define CAN_0_ILS_TCFL_SHIFT (10UL)
+#define CAN_0_ILS_TCL_MASK (0x200UL)
+#define CAN_0_ILS_TCL_SHIFT (9UL)
+#define CAN_0_ILS_HPML_MASK (0x100UL)
+#define CAN_0_ILS_HPML_SHIFT (8UL)
+#define CAN_0_ILS_RF1LL_MASK (0x80UL)
+#define CAN_0_ILS_RF1LL_SHIFT (7UL)
+#define CAN_0_ILS_RF1FL_MASK (0x40UL)
+#define CAN_0_ILS_RF1FL_SHIFT (6UL)
+#define CAN_0_ILS_RF1WL_MASK (0x20UL)
+#define CAN_0_ILS_RF1WL_SHIFT (5UL)
+#define CAN_0_ILS_RF1NL_MASK (0x10UL)
+#define CAN_0_ILS_RF1NL_SHIFT (4UL)
+#define CAN_0_ILS_RF0LL_MASK (0x8UL)
+#define CAN_0_ILS_RF0LL_SHIFT (3UL)
+#define CAN_0_ILS_RF0FL_MASK (0x4UL)
+#define CAN_0_ILS_RF0FL_SHIFT (2UL)
+#define CAN_0_ILS_RF0WL_MASK (0x2UL)
+#define CAN_0_ILS_RF0WL_SHIFT (1UL)
+#define CAN_0_ILS_RF0NL_MASK (0x1UL)
+#define CAN_0_ILS_RF0NL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_ILE_TYPE;
+#define CAN_0_ILE_EINT1_MASK (0x2UL)
+#define CAN_0_ILE_EINT1_SHIFT (1UL)
+#define CAN_0_ILE_EINT0_MASK (0x1UL)
+#define CAN_0_ILE_EINT0_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_GFC_TYPE;
+#define CAN_0_GFC_ANFS_MASK (0x30UL)
+#define CAN_0_GFC_ANFS_SHIFT (4UL)
+#define CAN_0_GFC_ANFE_MASK (0xcUL)
+#define CAN_0_GFC_ANFE_SHIFT (2UL)
+#define CAN_0_GFC_RRFS_MASK (0x2UL)
+#define CAN_0_GFC_RRFS_SHIFT (1UL)
+#define CAN_0_GFC_RRFE_MASK (0x1UL)
+#define CAN_0_GFC_RRFE_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_SIDFC_TYPE;
+#define CAN_0_SIDFC_LSS_MASK (0xff0000UL)
+#define CAN_0_SIDFC_LSS_SHIFT (16UL)
+#define CAN_0_SIDFC_FLSSA_MASK (0xfffcUL)
+#define CAN_0_SIDFC_FLSSA_SHIFT (2UL)
+
+
+
+
+typedef uint32_t CAN_0_XIDFC_TYPE;
+#define CAN_0_XIDFC_LSE_MASK (0x7f0000UL)
+#define CAN_0_XIDFC_LSE_SHIFT (16UL)
+#define CAN_0_XIDFC_FLESA_MASK (0xfffcUL)
+#define CAN_0_XIDFC_FLESA_SHIFT (2UL)
+
+
+
+
+typedef uint32_t CAN_0_XIDAM_TYPE;
+#define CAN_0_XIDAM_EIDM_MASK (0x1fffffffUL)
+#define CAN_0_XIDAM_EIDM_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_HPMS_TYPE;
+#define CAN_0_HPMS_FLST_MASK (0x8000UL)
+#define CAN_0_HPMS_FLST_SHIFT (15UL)
+#define CAN_0_HPMS_FIDX_MASK (0x7f00UL)
+#define CAN_0_HPMS_FIDX_SHIFT (8UL)
+#define CAN_0_HPMS_MSI_MASK (0xc0UL)
+#define CAN_0_HPMS_MSI_SHIFT (6UL)
+#define CAN_0_HPMS_BIDX_MASK (0x3fUL)
+#define CAN_0_HPMS_BIDX_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_NDAT1_TYPE;
+#define CAN_0_NDAT1_ND_MASK (0xffffffffUL)
+#define CAN_0_NDAT1_ND_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_NDAT2_TYPE;
+#define CAN_0_NDAT2_ND_MASK (0xffffffffUL)
+#define CAN_0_NDAT2_ND_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_RXF0C_TYPE;
+#define CAN_0_RXF0C_F0OM_MASK (0x80000000UL)
+#define CAN_0_RXF0C_F0OM_SHIFT (31UL)
+#define CAN_0_RXF0C_F0WM_MASK (0x7f000000UL)
+#define CAN_0_RXF0C_F0WM_SHIFT (24UL)
+#define CAN_0_RXF0C_F0S_MASK (0x7f0000UL)
+#define CAN_0_RXF0C_F0S_SHIFT (16UL)
+#define CAN_0_RXF0C_F0SA_MASK (0xfffcUL)
+#define CAN_0_RXF0C_F0SA_SHIFT (2UL)
+
+
+
+
+typedef uint32_t CAN_0_RXF0S_TYPE;
+#define CAN_0_RXF0S_RF0L_MASK (0x2000000UL)
+#define CAN_0_RXF0S_RF0L_SHIFT (25UL)
+#define CAN_0_RXF0S_F0F_MASK (0x1000000UL)
+#define CAN_0_RXF0S_F0F_SHIFT (24UL)
+#define CAN_0_RXF0S_F0PI_MASK (0x3f0000UL)
+#define CAN_0_RXF0S_F0PI_SHIFT (16UL)
+#define CAN_0_RXF0S_F0GI_MASK (0x3f00UL)
+#define CAN_0_RXF0S_F0GI_SHIFT (8UL)
+#define CAN_0_RXF0S_F0FL_MASK (0x7fUL)
+#define CAN_0_RXF0S_F0FL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_RXF0A_TYPE;
+#define CAN_0_RXF0A_F0AI_MASK (0x3fUL)
+#define CAN_0_RXF0A_F0AI_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_RXBC_TYPE;
+#define CAN_0_RXBC_RBSA_MASK (0xfffcUL)
+#define CAN_0_RXBC_RBSA_SHIFT (2UL)
+
+
+
+
+typedef uint32_t CAN_0_RXF1C_TYPE;
+#define CAN_0_RXF1C_F1OM_MASK (0x80000000UL)
+#define CAN_0_RXF1C_F1OM_SHIFT (31UL)
+#define CAN_0_RXF1C_F1WM_MASK (0x7f000000UL)
+#define CAN_0_RXF1C_F1WM_SHIFT (24UL)
+#define CAN_0_RXF1C_F1S_MASK (0x7f0000UL)
+#define CAN_0_RXF1C_F1S_SHIFT (16UL)
+#define CAN_0_RXF1C_F1SA_MASK (0xfffcUL)
+#define CAN_0_RXF1C_F1SA_SHIFT (2UL)
+
+
+
+
+typedef uint32_t CAN_0_RXF1S_TYPE;
+#define CAN_0_RXF1S_DMS_MASK (0xc0000000UL)
+#define CAN_0_RXF1S_DMS_SHIFT (30UL)
+#define CAN_0_RXF1S_RF1L_MASK (0x2000000UL)
+#define CAN_0_RXF1S_RF1L_SHIFT (25UL)
+#define CAN_0_RXF1S_F1F_MASK (0x1000000UL)
+#define CAN_0_RXF1S_F1F_SHIFT (24UL)
+#define CAN_0_RXF1S_F1PI_MASK (0x3f0000UL)
+#define CAN_0_RXF1S_F1PI_SHIFT (16UL)
+#define CAN_0_RXF1S_F1GI_MASK (0x3f00UL)
+#define CAN_0_RXF1S_F1GI_SHIFT (8UL)
+#define CAN_0_RXF1S_F1FL_MASK (0x7fUL)
+#define CAN_0_RXF1S_F1FL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_RXF1A_TYPE;
+#define CAN_0_RXF1A_F1AI_MASK (0x3fUL)
+#define CAN_0_RXF1A_F1AI_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_RXESC_TYPE;
+#define CAN_0_RXESC_RBDS_MASK (0x700UL)
+#define CAN_0_RXESC_RBDS_SHIFT (8UL)
+#define CAN_0_RXESC_F1DS_MASK (0x70UL)
+#define CAN_0_RXESC_F1DS_SHIFT (4UL)
+#define CAN_0_RXESC_F0DS_MASK (0x7UL)
+#define CAN_0_RXESC_F0DS_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBC_TYPE;
+#define CAN_0_TXBC_TFQM_MASK (0x40000000UL)
+#define CAN_0_TXBC_TFQM_SHIFT (30UL)
+#define CAN_0_TXBC_TFQS_MASK (0x3f000000UL)
+#define CAN_0_TXBC_TFQS_SHIFT (24UL)
+#define CAN_0_TXBC_NDTB_MASK (0x3f0000UL)
+#define CAN_0_TXBC_NDTB_SHIFT (16UL)
+#define CAN_0_TXBC_TBSA_MASK (0xfffcUL)
+#define CAN_0_TXBC_TBSA_SHIFT (2UL)
+
+
+
+
+typedef uint32_t CAN_0_TXFQS_TYPE;
+#define CAN_0_TXFQS_TFQF_MASK (0x200000UL)
+#define CAN_0_TXFQS_TFQF_SHIFT (21UL)
+#define CAN_0_TXFQS_TFQPI_MASK (0x1f0000UL)
+#define CAN_0_TXFQS_TFQPI_SHIFT (16UL)
+#define CAN_0_TXFQS_TFGI_MASK (0x1f00UL)
+#define CAN_0_TXFQS_TFGI_SHIFT (8UL)
+#define CAN_0_TXFQS_TFFL_MASK (0x3fUL)
+#define CAN_0_TXFQS_TFFL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXESC_TYPE;
+#define CAN_0_TXESC_TBDS_MASK (0x7UL)
+#define CAN_0_TXESC_TBDS_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBRP_TYPE;
+#define CAN_0_TXBRP_TRP_MASK (0xffffffffUL)
+#define CAN_0_TXBRP_TRP_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBAR_TYPE;
+#define CAN_0_TXBAR_AR_MASK (0xffffffffUL)
+#define CAN_0_TXBAR_AR_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBCR_TYPE;
+#define CAN_0_TXBCR_CR_MASK (0xffffffffUL)
+#define CAN_0_TXBCR_CR_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBTO_TYPE;
+#define CAN_0_TXBTO_TO_MASK (0xffffffffUL)
+#define CAN_0_TXBTO_TO_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBCF_TYPE;
+#define CAN_0_TXBCF_CF_MASK (0xffffffffUL)
+#define CAN_0_TXBCF_CF_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBTIE_TYPE;
+#define CAN_0_TXBTIE_TIE_MASK (0xffffffffUL)
+#define CAN_0_TXBTIE_TIE_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXBCIE_TYPE;
+#define CAN_0_TXBCIE_CFIE_MASK (0xffffffffUL)
+#define CAN_0_TXBCIE_CFIE_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXEFC_TYPE;
+#define CAN_0_TXEFC_EFWM_MASK (0x3f000000UL)
+#define CAN_0_TXEFC_EFWM_SHIFT (24UL)
+#define CAN_0_TXEFC_EFS_MASK (0x3f0000UL)
+#define CAN_0_TXEFC_EFS_SHIFT (16UL)
+#define CAN_0_TXEFC_EFSA_MASK (0xfffcUL)
+#define CAN_0_TXEFC_EFSA_SHIFT (2UL)
+
+
+
+
+typedef uint32_t CAN_0_TXEFS_TYPE;
+#define CAN_0_TXEFS_TEFL_MASK (0x2000000UL)
+#define CAN_0_TXEFS_TEFL_SHIFT (25UL)
+#define CAN_0_TXEFS_EFF_MASK (0x1000000UL)
+#define CAN_0_TXEFS_EFF_SHIFT (24UL)
+#define CAN_0_TXEFS_EFPI_MASK (0x1f0000UL)
+#define CAN_0_TXEFS_EFPI_SHIFT (16UL)
+#define CAN_0_TXEFS_EFGI_MASK (0x1f00UL)
+#define CAN_0_TXEFS_EFGI_SHIFT (8UL)
+#define CAN_0_TXEFS_EFFL_MASK (0x3fUL)
+#define CAN_0_TXEFS_EFFL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t CAN_0_TXEFA_TYPE;
+#define CAN_0_TXEFA_EFAI_MASK (0x1fUL)
+#define CAN_0_TXEFA_EFAI_SHIFT (0UL)
+
+
+
+
+typedef volatile struct COMP_PACKED _CAN_RDBType {
+    CAN_0_RAM_TYPE ram_begin; /* OFFSET: 0x0 */
+    CAN_RESERVED_TYPE rsvd0[8184]; /* OFFSET: 0x4 */
+    CAN_0_RAM_TYPE ram_end; /* OFFSET: 0x1ffc */
+    CAN_0_CREL_TYPE crel; /* OFFSET: 0x2000 */
+    CAN_0_ENDN_TYPE endn; /* OFFSET: 0x2004 */
+    CAN_0_CUST_TYPE cust; /* OFFSET: 0x2008 */
+    CAN_0_DBTP_TYPE dbtp; /* OFFSET: 0x200c */
+    CAN_0_TEST_TYPE test; /* OFFSET: 0x2010 */
+    CAN_0_RWD_TYPE rwd; /* OFFSET: 0x2014 */
+    CAN_0_CCCR_TYPE cccr; /* OFFSET: 0x2018 */
+    CAN_0_NBTP_TYPE nbtp; /* OFFSET: 0x201c */
+    CAN_0_TSCC_TYPE tscc; /* OFFSET: 0x2020 */
+    CAN_0_TSCV_TYPE tscv; /* OFFSET: 0x2024 */
+    CAN_0_TOCC_TYPE tocc; /* OFFSET: 0x2028 */
+    CAN_0_TOCV_TYPE tocv; /* OFFSET: 0x202c */
+    CAN_RESERVED_TYPE rsvd1[16]; /* OFFSET: 0x2030 */
+    CAN_0_ECR_TYPE ecr; /* OFFSET: 0x2040 */
+    CAN_0_PSR_TYPE psr; /* OFFSET: 0x2044 */
+    CAN_0_TDCR_TYPE tdcr; /* OFFSET: 0x2048 */
+    CAN_RESERVED_TYPE rsvd2[4]; /* OFFSET: 0x204c */
+    CAN_0_IR_TYPE ir; /* OFFSET: 0x2050 */
+    CAN_0_IE_TYPE ie; /* OFFSET: 0x2054 */
+    CAN_0_ILS_TYPE ils; /* OFFSET: 0x2058 */
+    CAN_0_ILE_TYPE ile; /* OFFSET: 0x205c */
+    CAN_RESERVED_TYPE rsvd3[32]; /* OFFSET: 0x2060 */
+    CAN_0_GFC_TYPE gfc; /* OFFSET: 0x2080 */
+    CAN_0_SIDFC_TYPE sidfc; /* OFFSET: 0x2084 */
+    CAN_0_XIDFC_TYPE xidfc; /* OFFSET: 0x2088 */
+    CAN_RESERVED_TYPE rsvd4[4]; /* OFFSET: 0x208c */
+    CAN_0_XIDAM_TYPE xidam; /* OFFSET: 0x2090 */
+    CAN_0_HPMS_TYPE hpms; /* OFFSET: 0x2094 */
+    CAN_0_NDAT1_TYPE ndat1; /* OFFSET: 0x2098 */
+    CAN_0_NDAT2_TYPE ndat2; /* OFFSET: 0x209c */
+    CAN_0_RXF0C_TYPE rxf0c; /* OFFSET: 0x20a0 */
+    CAN_0_RXF0S_TYPE rxf0s; /* OFFSET: 0x20a4 */
+    CAN_0_RXF0A_TYPE rxf0a; /* OFFSET: 0x20a8 */
+    CAN_0_RXBC_TYPE rxbc; /* OFFSET: 0x20ac */
+    CAN_0_RXF1C_TYPE rxf1c; /* OFFSET: 0x20b0 */
+    CAN_0_RXF1S_TYPE rxf1s; /* OFFSET: 0x20b4 */
+    CAN_0_RXF1A_TYPE rxf1a; /* OFFSET: 0x20b8 */
+    CAN_0_RXESC_TYPE rxesc; /* OFFSET: 0x20bc */
+    CAN_0_TXBC_TYPE txbc; /* OFFSET: 0x20c0 */
+    CAN_0_TXFQS_TYPE txfqs; /* OFFSET: 0x20c4 */
+    CAN_0_TXESC_TYPE txesc; /* OFFSET: 0x20c8 */
+    CAN_0_TXBRP_TYPE txbrp; /* OFFSET: 0x20cc */
+    CAN_0_TXBAR_TYPE txbar; /* OFFSET: 0x20d0 */
+    CAN_0_TXBCR_TYPE txbcr; /* OFFSET: 0x20d4 */
+    CAN_0_TXBTO_TYPE txbto; /* OFFSET: 0x20d8 */
+    CAN_0_TXBCF_TYPE txbcf; /* OFFSET: 0x20dc */
+    CAN_0_TXBTIE_TYPE txbtie; /* OFFSET: 0x20e0 */
+    CAN_0_TXBCIE_TYPE txbcie; /* OFFSET: 0x20e4 */
+    CAN_RESERVED_TYPE rsvd5[8]; /* OFFSET: 0x20e8 */
+    CAN_0_TXEFC_TYPE txefc; /* OFFSET: 0x20f0 */
+    CAN_0_TXEFS_TYPE txefs; /* OFFSET: 0x20f4 */
+    CAN_0_TXEFA_TYPE txefa; /* OFFSET: 0x20f8 */
+} CAN_RDBType;
+
+
+#define CAN_BASE                        (0x40014000UL)
+
+
+
+#define CAN_MAX_HW_ID                   (1UL)
+
+
+#define CAN_MSGRAM_SIZE                 (2048UL)
+
+
+#define CAN_MSGRAM_BASE                 (0x40014000UL)
+
+
+#define CAN_MSGRAM_MAX_STD_FILTER_ELEMS  (128UL)
+
+
+#define CAN_MSGRAM_MAX_EXT_FILTER_ELEMS  (64UL)
+
+
+#define CAN_MSGRAM_MAX_RX_FIFO0_ELEMS   (64UL)
+
+
+#define CAN_MSGRAM_MAX_RX_FIFO1_ELEMS   (64UL)
+
+
+#define CAN_MSGRAM_MAX_TX_EVENT_ELEMS   (32UL)
+
+
+#define CAN_MSGRAM_MAX_TX_BUFFER_ELEMS  (32UL)
+
+
+#define CAN_NBTP_NTSEG1_MIN             (1UL)
+
+
+#define CAN_NBTP_NTSEG1_MAX             (255UL)
+
+
+#define CAN_NBTP_NTSEG2_MIN             (0UL)
+
+
+#define CAN_NBTP_NTSEG2_MAX             (127UL)
+
+
+#define CAN_NBTP_NSJW_MIN               (0UL)
+
+
+#define CAN_NBTP_NSJW_MAX               (127UL)
+
+
+#define CAN_NBTP_NBRP_MIN               (0UL)
+
+
+#define CAN_NBTP_NBRP_MAX               (511UL)
+
+
+#define CAN_DBTP_DTSEG1_MIN             (0UL)
+
+
+#define CAN_DBTP_DTSEG1_MAX             (31UL)
+
+
+#define CAN_DBTP_DTSEG2_MIN             (0UL)
+
+
+#define CAN_DBTP_DTSEG2_MAX             (15UL)
+
+
+#define CAN_DBTP_DSJW_MIN               (0UL)
+
+
+#define CAN_DBTP_DSJW_MAX               (15UL)
+
+
+#define CAN_DBTP_DBRP_MIN               (0UL)
+
+
+#define CAN_DBTP_DBRP_MAX               (31UL)
+
+
+#define CAN_RXELEMENT_R0_RTR_MASK       (0x20000000UL)
+
+
+#define CAN_RXELEMENT_R0_XTD_MASK       (0x40000000UL)
+
+
+#define CAN_RXELEMENT_R0_ESI_MASK       (0x80000000UL)
+
+
+#define CAN_RXELEMENT_R0_ID_MASK        (0x1FFFFFFFUL)
+
+
+#define CAN_RXELEMENT_R1_FDF_MASK       (0x00200000UL)
+
+
+#define CAN_RXELEMENT_R1_BRS_MASK       (0x00100000UL)
+
+
+#define CAN_RXELEMENT_R1_DLC_MASK       (0x000F0000UL)
+
+
+#define CAN_RXELEMENT_DLC_SHIFT         (16UL)
+
+
+#define CAN_RXELEMENT_STDID_SHIFT       (18UL)
+
+
+#define CAN_RXELEMENT_FDF_SHIFT         (21UL)
+
+
+#define CAN_RXELEMENT_RTR_SHIFT         (29UL)
+
+
+#define CAN_RXELEMENT_BRS_SHIFT         (17UL)
+
+
+#define CAN_TXELEMENT_DLC_SHIFT         (16UL)
+
+
+#define CAN_TXELEMENT_STDID_SHIFT       (18UL)
+
+
+#define CAN_TXELEMENT_RTR_SHIFT         (29UL)
+
+
+#define CAN_TXELEMENT_XTD_SHIFT         (30UL)
+
+
+#define CAN_TXELEMENT_ESI_SHIFT         (31UL)
+
+
+#define CAN_TXELEMENT_MARKER_SHIFT      (24UL)
+
+
+#define CAN_TXELEMENT_EFC_SHIFT         (23UL)
+
+
+#define CAN_TXELEMENT_FDF_SHIFT         (21UL)
+
+
+#define CAN_TXELEMENT_BRS_SHIFT         (20UL)
+
+
+#define CAN_TXEVENT_FIFO_ELEMENT_R0_XTD_MASK  (0x40000000UL)
+
+
+#define CAN_TXEVENT_FIFO_ELEMENT_R0_ID_MASK  (0x1FFFFFFFUL)
+
+
+#define CAN_TXEVENT_FIFO_ELEMENT_R1_DLC_MASK  (0x000F0000UL)
+
+
+#define CAN_TXEVENT_FIFO_ELEMENT_R1_FDF_MASK  (0x00200000UL)
+
+
+#define CAN_TXEVENT_FIFO_ELEMENT_R1_BRS_MASK  (0x00100000UL)
+
+
+#define CAN_IE_ALL_MASK                 (0x1FFFFFFFUL)
+
+#endif /* CAN_RDB_H */

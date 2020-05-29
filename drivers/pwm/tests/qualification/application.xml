@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="pwm_qt">
+        <opt>ENABLE_PWM_TEST></opt>
+
+        <event>PWM_Test_Alarm_Event_1</event>
+
+        <task name="PWMIT1_Task">
+            <priority>4</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+            <event>PWM_Test_Alarm_Event_1</event>
+        </task>
+
+        <alarm
+            name="PWM_Test_Alarm_1"
+            counter="SystemTimer"
+            callback="PWM_TestAlarm1_Cb">
+            <autostart>false</autostart>
+            <alarmtime>0</alarmtime>
+            <cycletime>0</cycletime>
+        </alarm>
+    </comp>
+</brcm_cfg>

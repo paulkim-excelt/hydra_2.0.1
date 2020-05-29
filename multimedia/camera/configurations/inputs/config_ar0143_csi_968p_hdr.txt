@@ -1,0 +1,3 @@
+isp_hv_dpf_file: inputs/isp/ar0143_csi_968p_hdr.mod
+sensor_file:  inputs/sensor/ar0143_csi_968p_hdr.txt
+end

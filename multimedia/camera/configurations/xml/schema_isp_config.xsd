@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright 2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<!-- Root node -->
+<xsd:element name="isp_config">
+  <xsd:complexType>
+    <xsd:all>
+      <xsd:element name="common_config"     type="isp_pipe_t" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="hv_config"         type="isp_pipe_t" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="cv_config"         type="isp_pipe_t" minOccurs="0" maxOccurs="1"/>
+    </xsd:all>
+  </xsd:complexType>
+</xsd:element>
+
+<!-- ISP pipeline -->
+<xsd:complexType name="isp_pipe_t">
+  <xsd:all>
+
+    <!-- Input Configuration -->
+    <xsd:element name="image_input" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+        <xsd:element name="frame_width"     type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="frame_height"    type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="stride"          type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+        <xsd:element name="transposed"      type="xsd:boolean"         minOccurs="0" maxOccurs="1"/>
+
+        <xsd:element name="dpcm" minOccurs="0" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:all>
+
+              <xsd:element name="mode" minOccurs="1" maxOccurs="1">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="RAW10_8"/>
+                    <xsd:enumeration value="RAW12_8"/>
+                    <xsd:enumeration value="RAW14_8"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+
+              <xsd:element name="blocklen"   type="fixedp_type_u9.0_t"  minOccurs="1" maxOccurs="1"/>
+
+            </xsd:all>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="bayer_order" minOccurs="1" maxOccurs="1">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="RGGB"/>
+              <xsd:enumeration value="GBRG"/>
+              <xsd:enumeration value="BGGR"/>
+              <xsd:enumeration value="GRBG"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+
+        <xsd:element name="format" minOccurs="1" maxOccurs="1">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="RAW8"/>
+              <xsd:enumeration value="RAW10"/>
+              <xsd:enumeration value="RAW12"/>
+              <xsd:enumeration value="RAW14"/>
+              <xsd:enumeration value="RAW16"/>
+              <xsd:enumeration value="RAW10_8"/>
+              <xsd:enumeration value="RAW12_8"/>
+              <xsd:enumeration value="RAW14_8"/>
+              <xsd:enumeration value="RAW10L"/>
+              <xsd:enumeration value="RAW12L"/>
+              <xsd:enumeration value="RAW14L"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Black level -->
+    <xsd:element name="black_level" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="df_border_left"   type="fixedp_type_u8.0_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="df_border_right"  type="fixedp_type_u8.0_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="df_border_top"    type="fixedp_type_u8.0_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="df_border_bottom" type="fixedp_type_u8.0_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="df_mult"          type="fixedp_type_u8.8_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="threshold"        type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+
+          <xsd:element name="long_exp" minOccurs="1" maxOccurs="1">
+            <xsd:complexType>
+              <xsd:all>
+                <xsd:element name="lvl_r"  type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="lvl_b"  type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="lvl_gr" type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="lvl_gb" type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="abscissae_r"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_r"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="abscissae_b"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_b"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="abscissae_gr" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_gr" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="abscissae_gb" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_gb" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+              </xsd:all>
+            </xsd:complexType>
+          </xsd:element>
+
+          <xsd:element name="short_exp" minOccurs="0" maxOccurs="1">
+            <xsd:complexType>
+              <xsd:all>
+                <xsd:element name="lvl_r"  type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="lvl_b"  type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="lvl_gr" type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="lvl_gb" type="fixedp_type_u16.0_t" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="abscissae_r"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_r"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="abscissae_b"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_b"  type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="abscissae_gr" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_gr" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="abscissae_gb" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="ordinates_gb" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+              </xsd:all>
+            </xsd:complexType>
+          </xsd:element>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Lens shading -->
+    <xsd:element name="lens_shading" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:choice minOccurs="1" maxOccurs="1">
+
+          <xsd:element name="lens_shading_use_default_params" minOccurs="1" maxOccurs="1"/>
+
+          <xsd:sequence>
+            <xsd:element name="pitch"           type="fixedp_type_u10.0_t" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="vpitch"          type="fixedp_type_u10.0_t" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cell_sz_power_x" type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cell_sz_power_y" type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cv_r"            type="fixedp_type_u4.12_list_len_1089_t" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cv_gr"           type="fixedp_type_u4.12_list_len_1089_t" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cv_gb"           type="fixedp_type_u4.12_list_len_1089_t" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="cv_b"            type="fixedp_type_u4.12_list_len_1089_t" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- HDR fusion -->
+    <xsd:element name="hdr_fusion" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="swap_exp"  type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="thr_hi"    type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="thr_lo"    type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gain_r"    type="fixedp_type_u8.8_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gain_b"    type="fixedp_type_u8.8_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="exp_ratio" type="fixedp_type_u8.8_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="wt_sc"     type="fixedp_type_u20.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="threshold" type="fixedp_type_u23.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae" type="fixedp_type_u22.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Bayer denoise -->
+    <xsd:element name="bayer_denoise" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="r_str"   type="fixedp_type_u0.6_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="b_str"   type="fixedp_type_u0.6_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gr_str"  type="fixedp_type_u0.6_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gb_str"  type="fixedp_type_u0.6_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="r_gain"  type="fixedp_type_u2.4_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="b_gain"  type="fixedp_type_u2.4_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gr_gain" type="fixedp_type_u2.4_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gb_gain" type="fixedp_type_u2.4_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="mask"    type="boolean_list_len_49_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae" type="fixedp_type_u4.12_list_12_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates" type="fixedp_type_u4.12_list_12_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Statistics -->
+    <xsd:element name="statistics" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="hmask_0"           type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="hmask_1"           type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="shift"             type="fixedp_type_u8.0_t"   minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="pix_shift"         type="fixedp_type_u2.0_t"   minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="row_factor"        type="fixedp_type_u16.0_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="columns"           type="xsd:boolean"          minOccurs="0" maxOccurs="1"/>
+
+          <xsd:element name="regions_group_0" minOccurs="1" maxOccurs="1">
+            <xsd:complexType>
+              <xsd:all>
+                <xsd:element name="x_offset"    type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="y_offset"    type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="width"       type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="height"      type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="h_num"       type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="v_num"       type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+              </xsd:all>
+            </xsd:complexType>
+          </xsd:element>
+
+          <xsd:element name="regions_group_1_2" minOccurs="1" maxOccurs="1">
+            <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="region" minOccurs="1" maxOccurs="32">
+                    <xsd:complexType>
+                      <xsd:all>
+                        <xsd:element      name="x_offset" type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                        <xsd:element      name="y_offset" type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                        <xsd:element      name="width"    type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                        <xsd:element      name="height"   type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      </xsd:all>
+                      <xsd:attribute      name="id"       type="xsd:int"/>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+
+          <xsd:element name="group_thresholds" minOccurs="1" maxOccurs="1">
+            <xsd:complexType>
+              <xsd:all>
+
+                <xsd:element name="group_0" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:all>
+                      <xsd:element name="r_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="r_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="g_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="g_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="b_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="b_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="rg_lo"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="rg_hi"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="bg_lo"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="bg_hi"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                    </xsd:all>
+                  </xsd:complexType>
+                </xsd:element>
+
+                <xsd:element name="group_1" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:all>
+                      <xsd:element name="r_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="r_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="g_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="g_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="b_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="b_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="rg_lo"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="rg_hi"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="bg_lo"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="bg_hi"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                    </xsd:all>
+                  </xsd:complexType>
+                </xsd:element>
+
+                <xsd:element name="group_2" minOccurs="0" maxOccurs="1">
+                  <xsd:complexType>
+                    <xsd:all>
+                      <xsd:element name="r_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="r_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="g_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="g_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="b_lo"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="b_hi"        type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="rg_lo"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="rg_hi"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="bg_lo"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                      <xsd:element name="bg_hi"       type="fixedp_type_s16.0_t"  minOccurs="1" maxOccurs="1"/>
+                    </xsd:all>
+                  </xsd:complexType>
+                </xsd:element>
+
+              </xsd:all>
+            </xsd:complexType>
+          </xsd:element>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- White balance and gain -->
+    <xsd:element name="white_balance_and_gain" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="gain_r"    type="fixedp_type_u8.8_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gain_b"    type="fixedp_type_u8.8_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gain_all"  type="fixedp_type_u8.8_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offset_r"  type="fixedp_type_u17.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offset_g"  type="fixedp_type_u17.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offset_b"  type="fixedp_type_u17.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="threshold" type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Defective pixel correction -->
+    <xsd:element name="defective_pixel_correction" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="scale_lo"  type="fixedp_type_s2.4_list_len_3_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offset_lo" type="fixedp_type_s16.0_list_len_3_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="scale_hi"  type="fixedp_type_s2.4_list_len_3_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offset_hi" type="fixedp_type_s16.0_list_len_3_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="replace_index_lo" type="fixedp_type_u4.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="replace_index_hi" type="fixedp_type_u4.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="replace_scale_hi" type="fixedp_type_u4.4_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="replace_scale_lo" type="fixedp_type_u4.4_t" minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Fringing -->
+    <xsd:element name="fringing" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="r_pos"  type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="r_neg"  type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="b_pos"  type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="b_neg"  type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gr_pos" type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gr_neg" type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gb_pos" type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gb_neg" type="fixedp_type_s4.12_t"  minOccurs="1" maxOccurs="1"/>
+
+          <xsd:element name="r_pos_lim"  type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="r_neg_lim"  type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="b_pos_lim"  type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="b_neg_lim"  type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gr_pos_lim" type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gr_neg_lim" type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gb_pos_lim" type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gb_neg_lim" type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Crosstalk -->
+    <xsd:element name="crosstalk" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="abscissae_xc_lim"  type="fixedp_type_u16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_xc_lim"  type="fixedp_type_u16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Color denoise -->
+    <xsd:element name="color_denoise" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="center" minOccurs="0" maxOccurs="1">
+            <xsd:complexType>
+              <xsd:all>
+                <xsd:element name="x" type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="y" type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+              </xsd:all>
+            </xsd:complexType>
+          </xsd:element>
+
+          <xsd:element name="fir_shift"             type="fixedp_type_u2.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="g_wt"                  type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="bg_wt"                 type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="rg_wt"                 type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="iir_attenuation_lines" type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="iir_attenuation_shift" type="fixedp_type_u3.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="edge_threshold"        type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="edge_strength"         type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="edge_min"              type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+
+          <xsd:element name="abscissae_fir_bg"      type="fixedp_type_u16.0_list_6_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_fir_bg"      type="fixedp_type_u6.0_list_6_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_fir_rg"      type="fixedp_type_u16.0_list_6_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_fir_rg"      type="fixedp_type_u6.0_list_6_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_iir_bg"      type="fixedp_type_u16.0_list_6_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_iir_bg"      type="fixedp_type_u8.0_list_6_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_iir_rg"      type="fixedp_type_u16.0_list_6_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_iir_rg"      type="fixedp_type_u8.0_list_6_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_dist"        type="fixedp_type_u16.0_list_6_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_dist"        type="fixedp_type_u8.0_list_6_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_g"           type="fixedp_type_u16.0_list_6_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_g"           type="fixedp_type_u6.0_list_6_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_sat"         type="fixedp_type_u16.0_list_6_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_sat"         type="fixedp_type_u7.0_list_6_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Demosaic -->
+    <xsd:element name="demosaic" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="bayer_type" minOccurs="1" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="TRUE"/>
+                <xsd:enumeration value="H_COSITED"/>
+                <xsd:enumeration value="V_COSITED"/>
+                <xsd:enumeration value="HV_COSITED"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+
+          <xsd:element name="threshold"      type="fixedp_type_u16.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="hv_bias"        type="fixedp_type_u9.0_t"   minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="g_offset_shift" type="fixedp_type_u4.0_t"   minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Sharpen -->
+    <xsd:element name="sharpen" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="x_center"            type="fixedp_type_u16.0_t"                      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="y_center"            type="fixedp_type_u16.0_t"                      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="avg_g_shift"         type="fixedp_type_u5.0_t"                       minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="isotropic_strength"  type="fixedp_type_u8.8_t"                       minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_pos_gain"  type="fixedp_type_u16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_pos_gain"  type="fixedp_type_u4.12_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_v_gain"    type="fixedp_type_u16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_v_gain"    type="fixedp_type_u4.12_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_resp"      type="fixedp_type_s16.0_12_segments_pwl_t"      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_resp"      type="fixedp_type_s16.0_12_segments_pwl_t"      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_resp1"     type="fixedp_type_s16.0_12_segments_pwl_t"      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_resp1"     type="fixedp_type_s16.0_12_segments_pwl_t"      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_resp_gain" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_resp_gain" type="fixedp_type_u16.0_list_16_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Color correction -->
+    <xsd:element name="color_correction" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="matrix"   type="fixedp_type_s4.12_list_len_9_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offsets"  type="fixedp_type_s17.0_list_len_3_t" minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Gamma correction -->
+    <xsd:element name="gamma" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+
+          <xsd:element name="abscissae_r" type="fixedp_type_u16.0_list_32_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_r" type="fixedp_type_u16.0_list_32_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_g" type="fixedp_type_u16.0_list_32_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_g" type="fixedp_type_u16.0_list_32_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_b" type="fixedp_type_u16.0_list_32_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_b" type="fixedp_type_u16.0_list_32_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- YCBCR conversion -->
+    <xsd:element name="ycbcr_conversion" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="matrix"   type="fixedp_type_s4.10_list_len_9_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offsets"  type="fixedp_type_s17.0_list_len_3_t" minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- False color supression -->
+    <xsd:element name="false_color" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="strength1"       type="fixedp_type_u4.4_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="strength2"       type="fixedp_type_u4.4_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="filter_mix_cw"   type="fixedp_type_u5.3_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="filter_desat_cw" type="fixedp_type_u5.3_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="filter_mix_lo"   type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="filter_mix_hi"   type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="filter_desat_lo" type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="filter_desat_hi" type="fixedp_type_u16.0_t" minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Local tone mapping -->
+    <xsd:element name="local_tone_mapping" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="gf_en"        type="xsd:boolean"                              minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="gaussian_lpf" type="fixedp_type_u18.0_list_len_81_t"          minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="k_hp"         type="fixedp_type_u4.4_t"                       minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="k_color"      type="fixedp_type_u4.4_t"                       minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="epsilon"      type="fixedp_type_u0.16_t"                      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="div_sat"      type="fixedp_type_u32.0_t"                      minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_b"  type="fixedp_type_u16.0_list_32_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_b"  type="fixedp_type_u16.0_list_32_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_d"  type="fixedp_type_u16.0_list_32_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_d"  type="fixedp_type_u16.0_list_32_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Tone mapping -->
+    <xsd:element name="tone_mapping" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="abscissae_y"  type="fixedp_type_u16.0_list_32_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_y"  type="fixedp_type_u16.0_list_32_segments_pwl_t" minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Chrominance stretch -->
+    <xsd:element name="chrominance_stretch" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="abscissae_u"  type="fixedp_type_s16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_u"  type="fixedp_type_u16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="abscissae_v"  type="fixedp_type_s16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="ordinates_v"  type="fixedp_type_u16.0_list_8_segments_pwl_t"  minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Color conversion -->
+    <xsd:element name="color_conversion" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="matrix"   type="fixedp_type_s6.10_list_len_9_t" minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="offsets"  type="fixedp_type_s18.0_list_len_3_t" minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Low resolution resize -->
+    <xsd:element name="lr_resize" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="rb_swap"       type="xsd:boolean"          minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="output_width"  type="fixedp_type_u32.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="output_height" type="fixedp_type_u32.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="shift"         type="fixedp_type_u4.0_t"   minOccurs="1" maxOccurs="1"/>
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- High resolution output -->
+    <xsd:element name="hires_output" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="shift"         type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="big_endian"    type="xsd:boolean"         minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="sat_depth"     type="fixedp_type_u2.0_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="hflip"         type="xsd:boolean"         minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="vflip"         type="xsd:boolean"         minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="output_width"  type="fixedp_type_u1.0_t"  minOccurs="1" maxOccurs="1"/>
+
+          <xsd:element name="data_format" minOccurs="1" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="INTERLEAVED"/>
+                <xsd:enumeration value="565"/>
+                <xsd:enumeration value="RGBA32_0"/>
+                <xsd:enumeration value="RGBA32_255"/>
+                <xsd:enumeration value="444"/>
+                <xsd:enumeration value="422"/>
+                <xsd:enumeration value="420"/>
+                <xsd:enumeration value="YUYV"/>
+                <xsd:enumeration value="YVYU"/>
+                <xsd:enumeration value="UYVY"/>
+                <xsd:enumeration value="VYUY"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+    <!-- Low resolution output -->
+    <xsd:element name="lores_output" minOccurs="0" maxOccurs="1">
+      <xsd:complexType>
+        <xsd:all>
+          <xsd:element name="shift"         type="fixedp_type_u4.0_t"  minOccurs="1" maxOccurs="1"/>
+          <xsd:element name="big_endian"    type="xsd:boolean"         minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="sat_depth"     type="fixedp_type_u2.0_t"  minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="vflip"         type="xsd:boolean"         minOccurs="0" maxOccurs="1"/>
+          <xsd:element name="output_width"  type="fixedp_type_u1.0_t"  minOccurs="1" maxOccurs="1"/>
+
+          <xsd:element name="data_format" minOccurs="1" maxOccurs="1">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="INTERLEAVED"/>
+                <xsd:enumeration value="565"/>
+                <xsd:enumeration value="RGBA32_0"/>
+                <xsd:enumeration value="RGBA32_255"/>
+                <xsd:enumeration value="444"/>
+                <xsd:enumeration value="422"/>
+                <xsd:enumeration value="420"/>
+                <xsd:enumeration value="YUYV"/>
+                <xsd:enumeration value="YVYU"/>
+                <xsd:enumeration value="UYVY"/>
+                <xsd:enumeration value="VYUY"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+
+  </xsd:all>
+</xsd:complexType>
+
+<!-- ********************************************************************** -->
+<!-- *********************** Composite Helper Types *********************** -->
+<!-- ********************************************************************** -->
+
+<!-- PWL types -->
+<xsd:simpleType name="fixedp_type_u6.0_list_6_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u6.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="6"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u7.0_list_6_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u7.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="6"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u8.0_list_6_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u8.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="6"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u16.0_list_6_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u16.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="6"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s16.0_list_8_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_s16.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="8"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u16.0_list_8_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u16.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="8"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u4.12_list_8_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u4.12_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="8"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u4.12_list_12_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u4.12_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="12"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s16.0_12_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_s16.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="12"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u16.0_list_16_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u16.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="16"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u16.0_list_32_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u16.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="32"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u22.0_list_16_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_u22.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="16"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s32.0_8_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_s32.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="8"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s32.0_16_segments_pwl_t">
+  <xsd:restriction base="fixedp_type_s32.0_list_t">
+    <xsd:minLength value="2"/>
+    <xsd:maxLength value="16"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<!-- Fixed length list types -->
+<xsd:simpleType name="boolean_list_len_49_t">
+  <xsd:restriction base="boolean_list_t">
+    <xsd:length value="49"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s2.4_list_len_3_t">
+  <xsd:restriction base="fixedp_type_s2.4_list_t">
+    <xsd:length value="3"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s4.10_list_len_9_t">
+  <xsd:restriction base="fixedp_type_s4.10_list_t">
+    <xsd:length value="9"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s4.12_list_len_9_t">
+  <xsd:restriction base="fixedp_type_s4.12_list_t">
+    <xsd:length value="9"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s6.10_list_len_9_t">
+  <xsd:restriction base="fixedp_type_s6.10_list_t">
+    <xsd:length value="9"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s16.0_list_len_3_t">
+  <xsd:restriction base="fixedp_type_s16.0_list_t">
+    <xsd:length value="3"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u16.0_list_len_81_t">
+  <xsd:restriction base="fixedp_type_u16.0_list_t">
+    <xsd:length value="81"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u4.12_list_len_1089_t">
+  <xsd:restriction base="fixedp_type_u4.12_list_t">
+    <xsd:minLength value="1"/>
+    <xsd:maxLength value="1089"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s17.0_list_len_3_t">
+  <xsd:restriction base="fixedp_type_s17.0_list_t">
+    <xsd:length value="3"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u18.0_list_len_81_t">
+  <xsd:restriction base="fixedp_type_u18.0_list_t">
+    <xsd:length value="81"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s18.0_list_len_3_t">
+  <xsd:restriction base="fixedp_type_s18.0_list_t">
+    <xsd:length value="3"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<!-- Base list types -->
+<xsd:simpleType name="boolean_list_t">
+  <xsd:list itemType="xsd:boolean"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s2.4_list_t">
+  <xsd:list itemType="fixedp_type_u2.4_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u6.0_list_t">
+  <xsd:list itemType="fixedp_type_u6.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u7.0_list_t">
+  <xsd:list itemType="fixedp_type_u7.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u8.0_list_t">
+  <xsd:list itemType="fixedp_type_u8.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s4.10_list_t">
+  <xsd:list itemType="fixedp_type_s4.10_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s4.12_list_t">
+  <xsd:list itemType="fixedp_type_s4.12_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u4.12_list_t">
+  <xsd:list itemType="fixedp_type_u4.12_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s6.10_list_t">
+  <xsd:list itemType="fixedp_type_s6.10_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u16.0_list_t">
+  <xsd:list itemType="fixedp_type_u16.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s16.0_list_t">
+  <xsd:list itemType="fixedp_type_s16.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s17.0_list_t">
+  <xsd:list itemType="fixedp_type_s17.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s18.0_list_t">
+  <xsd:list itemType="fixedp_type_s18.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u18.0_list_t">
+  <xsd:list itemType="fixedp_type_u18.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u22.0_list_t">
+  <xsd:list itemType="fixedp_type_u22.0_t"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s32.0_list_t">
+  <xsd:list itemType="fixedp_type_s32.0_t"/>
+</xsd:simpleType>
+
+<!-- ********************************************************************** -->
+<!-- *********************** Unigned Fixedp Types ************************* -->
+<!-- ********************************************************************** -->
+<xsd:simpleType name="fixedp_type_u1.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="1"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u2.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="3"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u3.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="7"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u4.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="15"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u5.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="31"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u6.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="63"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u0.6_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="63"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u2.4_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="63"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u7.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="127"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u8.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="255"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u4.4_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="255"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u5.3_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="255"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u9.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="511"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u10.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="1024"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u0.16_t">
+  <xsd:restriction base="xsd:unsignedShort"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u4.12_t">
+  <xsd:restriction base="xsd:unsignedShort"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u8.8_t">
+  <xsd:restriction base="xsd:unsignedShort"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u16.0_t">
+  <xsd:restriction base="xsd:unsignedShort"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u17.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="131071"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u18.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="262143"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u20.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="1048575"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u22.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="4194303"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u23.0_t">
+  <xsd:restriction base="xsd:unsignedInt">
+    <xsd:minInclusive value="0"/>
+    <xsd:maxInclusive value="8388607"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_u32.0_t">
+  <xsd:restriction base="xsd:unsignedInt"/>
+</xsd:simpleType>
+
+<!-- ********************************************************************** -->
+<!-- ************************ Signed Fixedp Types ************************* -->
+<!-- ********************************************************************** -->
+
+<xsd:simpleType name="fixedp_type_s4.10_t">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minInclusive value="-8912"/>
+    <xsd:maxInclusive value="8911"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s6.10_t">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minInclusive value="-32768"/>
+    <xsd:maxInclusive value="32767"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s16.0_t">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minInclusive value="-32768"/>
+    <xsd:maxInclusive value="32767"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s4.12_t">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minInclusive value="-32768"/>
+    <xsd:maxInclusive value="32767"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s17.0_t">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minInclusive value="-65536"/>
+    <xsd:maxInclusive value="65535"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s18.0_t">
+  <xsd:restriction base="xsd:integer">
+    <xsd:minInclusive value="-131072"/>
+    <xsd:maxInclusive value="131071"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fixedp_type_s32.0_t">
+  <xsd:restriction base="xsd:integer"/>
+</xsd:simpleType>
+
+</xsd:schema>

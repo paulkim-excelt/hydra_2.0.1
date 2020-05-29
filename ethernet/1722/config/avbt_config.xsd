@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name ="Hex64StringType">
+        <xs:restriction base = "xs:string">
+            <xs:pattern value = "0x[0-9A-Fa-f]{16}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "pcpValueType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "PCP_0"/>
+            <xs:enumeration value = "PCP_1"/>
+            <xs:enumeration value = "PCP_2"/>
+            <xs:enumeration value = "PCP_3"/>
+            <xs:enumeration value = "PCP_4"/>
+            <xs:enumeration value = "PCP_5"/>
+            <xs:enumeration value = "PCP_6"/>
+            <xs:enumeration value = "PCP_7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "vlanValueType">
+        <xs:restriction base = "xs:unsignedInt">
+            <xs:minInclusive value = "2"/>
+            <xs:maxInclusive value = "4094"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "trafficClassType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "CLASS_A"/>
+            <xs:enumeration value = "CLASS_B"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "percentRsvdBWType">
+        <xs:union>
+                <xs:simpleType>
+                    <xs:restriction base = "xs:unsignedInt">
+                        <xs:minInclusive value = "0"/>
+                        <xs:maxInclusive value = "70"/>
+                    </xs:restriction>
+                </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    <xs:simpleType name ="VideoPayloadType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "H264"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name ="AudioPayloadType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "PCM"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "audioSampleFormatType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "USERSPECIFIED"/>
+            <xs:enumeration value = "FLOAT32"/>
+            <xs:enumeration value = "INT32"/>
+            <xs:enumeration value = "INT24"/>
+            <xs:enumeration value = "INT16"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "audioSampleFrequencyType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "USER_SPEC"/>
+            <xs:enumeration value = "8KHZ"/>
+            <xs:enumeration value = "16KHZ"/>
+            <xs:enumeration value = "32KHZ"/>
+            <xs:enumeration value = "44_1KHZ"/>
+            <xs:enumeration value = "48KHZ"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "audChannelsPerFrameType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "PCM_MONO"/>
+            <xs:enumeration value = "PCM_STEREO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "numBitsAudSampleType">
+        <xs:restriction base = "xs:unsignedInt">
+            <xs:minInclusive value = "0"/>
+            <xs:maxInclusive value = "32"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "audTimestampModeType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "TIMESTAMP_EACH_PACKET"/>
+            <xs:enumeration value = "TIMESTAMP_EVERY_8TH_PACKET"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name = "payloadFormatType">
+        <xs:choice>
+            <xs:sequence>
+                <xs:element
+                    name = "videoFormat" type = "VideoPayloadType"
+                    />
+            </xs:sequence>
+            <xs:sequence>
+                <xs:element
+                    name = "audioFormat" type = "AudioPayloadType"
+                    />
+                <xs:element
+                    name = "audioSampleFormat" type = "audioSampleFormatType"
+                    />
+                <xs:element
+                    name = "audioSampleFrequency" type = "audioSampleFrequencyType"
+                    />
+                <xs:element
+                    name = "audChannelsPerFrame" type = "audChannelsPerFrameType"
+                    />
+                <xs:element
+                    name = "numBitsAudSample" type = "numBitsAudSampleType"
+                    />
+                <xs:element
+                    name = "audTimestampMode" type = "audTimestampModeType"
+                    />
+            </xs:sequence>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name = "avb_portType">
+        <xs:sequence>
+            <xs:element
+                name = "streamID" type = "Hex64StringType"
+                />
+            <xs:element
+                name = "payloadFormat" type = "payloadFormatType"
+                />
+            <xs:element
+                name = "mcStreamAddr" type = "Hex64StringType"
+                />
+            <xs:element
+                name = "pcpValue" type = "pcpValueType"
+                />
+            <xs:element
+                name = "vlanValue" type = "vlanValueType"
+                />
+            <xs:element
+                name = "trafficClass" type = "trafficClassType"
+                />
+            <xs:element
+                name = "percentRsvdBW" type = "percentRsvdBWType"
+                />
+            <xs:element
+                name = "maxTransitTimeinNS" type = "xs:unsignedInt"
+                />
+            <xs:element
+                name = "talkerProcDelayNs" type = "xs:unsignedInt"
+                />
+            <xs:element
+                name = "listenerProcDelayNs" type = "xs:unsignedInt"
+                />
+            <xs:element
+                name = "headerLenOffset" type = "xs:unsignedInt"
+                />
+        </xs:sequence>
+    </xs:complexType>
+
+<xs:element name="avbt_cfg">
+  <xs:complexType>
+    <xs:sequence>
+        <xs:element
+            name = "avb_port" type = "avb_portType" minOccurs = "1" maxOccurs = "4"
+            />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

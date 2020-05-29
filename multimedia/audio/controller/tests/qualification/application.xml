@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="audio_qt">
+        <include>multimedia/audio/controller/os/erika/audio.xml</include>
+
+        <opt>ENABLE_SHELL_AUTO_TEST_FUNC</opt>
+        <opt>ENABLE_AUDIO_TEST</opt>
+        <opt>ENABLE_AUDIO_PLAY_PORT1</opt>
+        <opt>ENABLE_AUDIO_REC_PORT1</opt>
+
+        <task name="AudioTest">
+            <priority>12</priority>
+            <autostart>false</autostart>
+            <stack>4096</stack>
+            <event>SystemEvent0</event>
+            <event>SystemEvent1</event>
+        </task>
+
+        <task name="AudioTest_PlayTask">
+            <priority>16</priority>
+            <autostart>false</autostart>
+            <stack>4096</stack>
+            <event>SystemEvent1</event>
+            <event>SystemEvent2</event>
+            <event>SystemEvent3</event>
+        </task>
+
+        <task name="AudioTest_RecordTask">
+            <priority>16</priority>
+            <autostart>false</autostart>
+            <stack>4096</stack>
+            <event>SystemEvent1</event>
+            <event>SystemEvent2</event>
+            <event>SystemEvent3</event>
+        </task>
+    </comp>
+</brcm_cfg>

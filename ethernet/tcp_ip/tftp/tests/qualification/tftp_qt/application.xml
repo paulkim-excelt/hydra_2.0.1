@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="tftp_qt">
+    <include>ethernet/tcp_ip/inet/os/erika/inet.xml</include>
+    <opt>ENABLE_TFTP</opt>
+    <opt>TFTP_TEST</opt>
+    <task name="TFTPTest">
+            <priority>10</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+            <event>SystemEvent0</event>
+            <event>SystemEvent1</event>
+    </task>
+    <alarm name="TFTP_TEST_Alarm" counter="SystemTimer" callback="TFTP_TEST_AlarmCb">
+            <autostart>true</autostart>
+            <alarmtime>1</alarmtime>
+            <cycletime>96</cycletime>
+    </alarm>
+    </comp>
+</brcm_cfg>

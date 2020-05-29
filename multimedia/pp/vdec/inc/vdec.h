@@ -1,0 +1,112 @@
+/*****************************************************************************
+ Copyright 2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IPPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IPPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COPPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEPPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+******************************************************************************/
+
+ /**
+    @defgroup grp_vdec_comp Vendor Decoder Component
+    @ingroup grp_vdec
+
+    @addtogroup grp_vdec_comp
+    @{
+
+    Vendor Decoder is integration of vendor delivery into the SDK.
+    <BR>VDEC media component accept, processes and acknowledge commands from media
+    framework. VDEC media component also controls/handles the data flow using
+    the media framework layers.
+
+    @section sec_vdec_fsm State Machine
+
+    @section sec_vdec_seq Sequence Diagrams
+
+    @section sec_vdec_perf Performance & Memory
+
+    | Performance       | Description                                       |
+    |:-----------------:|:-------------------------------------------------:|
+    | CPU Load          |   Update CPU load here                            |
+    | Memory Bandwidth  |   Update Memory Bandwidth here                    |
+    | HW Utilization    |   Update Hardware utilization here                |
+
+    @limitations None
+
+    @file vdec.h
+    @brief Vendor Decoder component interface function headers
+
+    This file contains the interface function declarations for Vendor Decoer component
+
+    @version 0.1 Initial version
+*/
+
+#ifndef VDEC_H
+#define VDEC_H
+
+#include <component.h>
+
+/**
+    @name VDEC API IDs
+    @{
+    @brief API IDs for Component
+*/
+#define BRCM_SWARCH_VDEC_GETFNTABLE_PROC         (0x80U) /**< @brief #VDEC_GetCompFnTable */
+/** @} */
+
+
+/** @brief Get the functon table
+
+    Get the function table
+
+    @behavior Sync, Re-entrant
+
+    @pre None
+
+    @param[in]   void
+
+    @retval     Function table
+
+    @post None
+
+    @trace  #BRCM_SWREQ_VDEC_MEDIA_COMPONENT
+
+    @limitations None
+*/
+const MSYS_CompFnTblType* VDEC_GetCompFnTable(void);
+
+#endif /* VDEC_H */
+/** @} */

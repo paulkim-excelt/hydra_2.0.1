@@ -1,0 +1,3 @@
+isp_hv_dpf_file: inputs/isp/ov10640_csi_hv.mod
+sensor_file:  inputs/sensor/ov10640_csi_60fps.txt
+end

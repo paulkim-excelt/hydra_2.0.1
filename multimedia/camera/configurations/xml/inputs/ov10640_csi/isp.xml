@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright 2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+-->
+
+<isp_config>
+<common_config>
+
+  <!-- Input image -->
+  <image_input>
+    <frame_width>1280</frame_width>
+    <frame_height>720</frame_height>
+    <stride>2560</stride>
+    <bayer_order>BGGR</bayer_order>
+    <format>RAW16</format>
+    <transposed>false</transposed>
+  </image_input>
+
+  <!-- Black level -->
+  <black_level>
+    <df_border_left>0</df_border_left>
+    <df_border_right>0</df_border_right>
+    <df_border_top>0</df_border_top>
+    <df_border_bottom>0</df_border_bottom>
+    <df_mult>0</df_mult>
+    <threshold>0</threshold>
+
+    <long_exp>
+
+      <abscissae_r>0 64 65535 65535</abscissae_r>
+      <ordinates_r>0 0  65535 65535</ordinates_r>
+
+      <abscissae_b>0 64 65535 65535</abscissae_b>
+      <ordinates_b>0 0  65535 65535</ordinates_b>
+
+      <abscissae_gr>0 64 65535 65535</abscissae_gr>
+      <ordinates_gr>0 0  65535 65535</ordinates_gr>
+
+      <abscissae_gb>0 64 65535 65535</abscissae_gb>
+      <ordinates_gb>0 0  65535 65535</ordinates_gb>
+
+    </long_exp>
+
+    <short_exp>
+
+      <abscissae_r>0  4 4095 65535</abscissae_r>
+      <ordinates_r>0  0 65535 65535</ordinates_r>
+
+      <abscissae_b>0 4 4095 65535</abscissae_b>
+      <ordinates_b>0 0 65535 65535</ordinates_b>
+
+      <abscissae_gr>0 4 4095 65535</abscissae_gr>
+      <ordinates_gr>0 0 65535 65535</ordinates_gr>
+
+      <abscissae_gb>0 4 4095 65535</abscissae_gb>
+      <ordinates_gb>0 0 65535 65535</ordinates_gb>
+
+    </short_exp>
+
+  </black_level>
+
+  <!-- Lens shading -->
+  <lens_shading>
+
+    <pitch>15</pitch>
+    <vpitch>9</vpitch>
+    <cell_sz_power_x>7</cell_sz_power_x>
+    <cell_sz_power_y>7</cell_sz_power_y>
+
+    <cv_r>
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+    </cv_r>
+
+    <cv_gr>
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+    </cv_gr>
+
+    <cv_gb>
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+    </cv_gb>
+
+    <cv_b>
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+        4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095    4095
+    </cv_b>
+
+  </lens_shading>
+
+  <!-- HDR fusion -->
+  <hdr_fusion>
+    <swap_exp>false</swap_exp>
+    <thr_hi>65000</thr_hi>
+    <thr_lo>62500</thr_lo>
+    <gain_r>256</gain_r>
+    <gain_b>256</gain_b>
+    <exp_ratio>4096</exp_ratio>
+    <wt_sc>26844</wt_sc>
+    <threshold>1048575</threshold>
+    <abscissae>0 16384 65535 524288 1048575 4194303</abscissae>
+    <ordinates>0 16384 40960 55296    63487   65535</ordinates>
+  </hdr_fusion>
+
+  <!-- Bayer denoise -->
+  <bayer_denoise>
+    <r_str>34</r_str>
+    <b_str>34</b_str>
+    <gr_str>34</gr_str>
+    <gb_str>34</gb_str>
+    <r_gain>42</r_gain>
+    <b_gain>42</b_gain>
+    <gr_gain>42</gr_gain>
+    <gb_gain>42</gb_gain>
+    <abscissae>0 1500 3015 4000 4800 7360 12000 14950 26750 29450 35150 65535</abscissae>
+    <ordinates>0   45 2000 3000 3500 4000  5000  5000  2000  2000  2000  2000</ordinates>
+    <mask>1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1</mask>
+  </bayer_denoise>
+
+  <!-- Statistics -->
+  <statistics>
+    <hmask_0>255</hmask_0>
+    <hmask_1>65280</hmask_1>
+    <shift>9</shift>
+    <pix_shift>2</pix_shift>
+
+    <group_thresholds>
+      <group_0>
+        <r_lo>64</r_lo>
+        <r_hi>32768</r_hi>
+        <g_lo>64</g_lo>
+        <g_hi>32768</g_hi>
+        <b_lo>64</b_lo>
+        <b_hi>32768</b_hi>
+        <rg_lo>-32768</rg_lo>
+        <rg_hi>32767</rg_hi>
+        <bg_lo>-32768</bg_lo>
+        <bg_hi>32767</bg_hi>
+      </group_0>
+
+      <group_2>
+        <r_lo>0</r_lo>
+        <r_hi>65535</r_hi>
+        <g_lo>0</g_lo>
+        <g_hi>65535</g_hi>
+        <b_lo>0</b_lo>
+        <b_hi>65535</b_hi>
+        <rg_lo>-32768</rg_lo>
+        <rg_hi>32767</rg_hi>
+        <bg_lo>-32768</bg_lo>
+        <bg_hi>32767</bg_hi>
+      </group_2>
+    </group_thresholds>
+
+    <regions_group_0>
+      <x_offset>0</x_offset>
+      <y_offset>0</y_offset>
+      <width>80</width>
+      <height>90</height>
+      <h_num>16</h_num>
+      <v_num>8</v_num>
+    </regions_group_0>
+
+    <regions_group_1_2>
+      <region id="3904">
+        <x_offset>0</x_offset>
+        <y_offset>0</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3905">
+        <x_offset>320</x_offset>
+        <y_offset>0</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3906">
+        <x_offset>640</x_offset>
+        <y_offset>0</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3907">
+        <x_offset>960</x_offset>
+        <y_offset>0</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3908">
+        <x_offset>0</x_offset>
+        <y_offset>180</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3909">
+        <x_offset>320</x_offset>
+        <y_offset>180</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3910">
+        <x_offset>640</x_offset>
+        <y_offset>180</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3911">
+        <x_offset>960</x_offset>
+        <y_offset>180</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3912">
+        <x_offset>0</x_offset>
+        <y_offset>360</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3913">
+        <x_offset>320</x_offset>
+        <y_offset>360</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3914">
+        <x_offset>640</x_offset>
+        <y_offset>360</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3915">
+        <x_offset>960</x_offset>
+        <y_offset>360</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3916">
+        <x_offset>0</x_offset>
+        <y_offset>540</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3917">
+        <x_offset>320</x_offset>
+        <y_offset>540</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3918">
+        <x_offset>640</x_offset>
+        <y_offset>540</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+
+      <region id="3919">
+        <x_offset>960</x_offset>
+        <y_offset>540</y_offset>
+        <width>320</width>
+        <height>180</height>
+      </region>
+    </regions_group_1_2>
+  </statistics>
+
+  <!-- White balance and gain -->
+  <white_balance_and_gain>
+    <gain_r>256</gain_r>
+    <gain_b>256</gain_b>
+    <gain_all>256</gain_all>
+    <offset_r>0</offset_r>
+    <offset_g>0</offset_g>
+    <offset_b>0</offset_b>
+    <threshold>65535</threshold>
+  </white_balance_and_gain>
+
+  <!-- Defective pixel correction -->
+  <defective_pixel_correction>
+    <scale_lo>16 16 16</scale_lo>
+    <offset_lo>5000 5000 5000</offset_lo>
+    <scale_hi>16 16 16</scale_hi>
+    <offset_hi>5000 5000 5000</offset_hi>
+    <replace_index_lo>1</replace_index_lo>
+    <replace_index_hi>9</replace_index_hi>
+    <replace_scale_hi>16</replace_scale_hi>
+    <replace_scale_lo>16</replace_scale_lo>
+  </defective_pixel_correction>
+
+  <!-- Fringing -->
+  <fringing>
+    <r_pos>819</r_pos>
+    <r_neg>655</r_neg>
+    <b_pos>492</b_pos>
+    <b_neg>328</b_neg>
+    <gr_pos>-82</gr_pos>
+    <gr_neg>0</gr_neg>
+    <gb_pos>-82</gb_pos>
+    <gb_neg>0</gb_neg>
+
+    <r_pos_lim>4000</r_pos_lim>
+    <r_neg_lim>4000</r_neg_lim>
+    <b_pos_lim>4000</b_pos_lim>
+    <b_neg_lim>4000</b_neg_lim>
+    <gr_pos_lim>3000</gr_pos_lim>
+    <gr_neg_lim>2000</gr_neg_lim>
+    <gb_pos_lim>3000</gb_pos_lim>
+    <gb_neg_lim>2000</gb_neg_lim>
+  </fringing>
+
+  <!-- Crosstalk -->
+  <crosstalk>
+    <abscissae_xc_lim>0   1024 8192 65535</abscissae_xc_lim>
+    <ordinates_xc_lim>200  600  900   900</ordinates_xc_lim>
+  </crosstalk>
+
+  <!-- Color denoise -->
+  <color_denoise>
+
+    <fir_shift>1</fir_shift>
+    <g_wt>6</g_wt>
+    <bg_wt>5</bg_wt>
+    <rg_wt>5</rg_wt>
+    <iir_attenuation_lines>6</iir_attenuation_lines>
+    <iir_attenuation_shift>2</iir_attenuation_shift>
+    <edge_threshold>5</edge_threshold>
+    <edge_strength>1024</edge_strength>
+    <edge_min>38</edge_min>
+
+    <abscissae_fir_bg> 0 60 108 65535</abscissae_fir_bg>
+    <ordinates_fir_bg>32 32   0     0</ordinates_fir_bg>
+
+    <abscissae_fir_rg> 0 60 108 65535</abscissae_fir_rg>
+    <ordinates_fir_rg>32 32   0     0</ordinates_fir_rg>
+
+    <abscissae_iir_bg>  0  40 72 65535</abscissae_iir_bg>
+    <ordinates_iir_bg>128 128  0     0</ordinates_iir_bg>
+
+    <abscissae_iir_rg>  0  40 72 65535</abscissae_iir_rg>
+    <ordinates_iir_rg>128 128  0     0</ordinates_iir_rg>
+
+    <abscissae_dist>  0 1512 2016 3528 65535</abscissae_dist>
+    <ordinates_dist>127  127   95   15    15</ordinates_dist>
+
+    <abscissae_g> 0 300 65535</abscissae_g>
+    <ordinates_g>48  16    16</ordinates_g>
+
+    <abscissae_sat> 0 200 400 65535</abscissae_sat>
+    <ordinates_sat>32  32  64    64</ordinates_sat>
+
+  </color_denoise>
+
+  <!-- Demosaic -->
+  <demosaic>
+    <bayer_type>TRUE</bayer_type>
+    <threshold>20</threshold>
+    <hv_bias>0</hv_bias>
+    <g_offset_shift>0</g_offset_shift>
+  </demosaic>
+
+  <!-- Sharpen -->
+  <sharpen>
+    <x_center>640</x_center>
+    <y_center>360</y_center>
+    <avg_g_shift>0</avg_g_shift>
+    <isotropic_strength>128</isotropic_strength>
+    <abscissae_pos_gain>   0  750 1500 2000 2500 3000 65535</abscissae_pos_gain>
+    <ordinates_pos_gain>4096 4096 3752 3351 2699 1901  1901</ordinates_pos_gain>
+    <abscissae_v_gain>  0 1600 3000 5000 7000 12000 65535</abscissae_v_gain>
+    <ordinates_v_gain>983  983  983  983  819   655   655</ordinates_v_gain>
+    <abscissae_resp>-32768 -300 -200 -100 -64 -10 10  64 100 200 300 32767</abscissae_resp>
+    <ordinates_resp>  -600 -600 -536 -382 -213  0  0 162 275 466 550   550</ordinates_resp>
+    <abscissae_resp1>-32768 -300 -100 -64 -16 12 16 64 100 200 300 32767</abscissae_resp1>
+    <ordinates_resp1>  -120 -120  -40 -20   0  0  0 20  40  80 120   120</ordinates_resp1>
+    <abscissae_resp_gain> 0 1126 1438 2124 2498 4032 4734 6768 7470 9910 10612 11450 12896 13850 14956 65535</abscissae_resp_gain>
+    <ordinates_resp_gain>50   96  147  146  192  245  326  370  431  477   549   548   664   661   420   420</ordinates_resp_gain>
+  </sharpen>
+
+  <!-- Color correction -->
+  <color_correction>
+    <matrix>6092  -1678  -318  -768  6237  -1373  -161  -1651  5907</matrix>
+    <offsets>0 0 0</offsets>
+  </color_correction>
+
+  <!-- Gamma correction -->
+  <gamma>
+    <abscissae_r>0   128   256   512  1024  1536  2048  4096  8192 16384 32768 65535</abscissae_r>
+    <ordinates_r>0 13561 18586 25467 34900 41964 45013 52934 57510 61687 64031 65535</ordinates_r>
+    <abscissae_g>0   128   256   512  1024  1536  2048  4096  8192 16384 32768 65535</abscissae_g>
+    <ordinates_g>0 13561 18586 25467 34900 41964 45013 52934 57510 61687 64031 65535</ordinates_g>
+    <abscissae_b>0   128   256   512  1024  1536  2048  4096  8192 16384 32768 65535</abscissae_b>
+    <ordinates_b>0 13561 18586 25467 34900 41964 45013 52934 57510 61687 64031 65535</ordinates_b>
+  </gamma>
+
+  <!-- YCBCR conversion -->
+  <ycbcr_conversion>
+    <matrix>263  519  100  -152  -298  450  449  -377  -73</matrix>
+    <offsets>0 0 0</offsets>
+  </ycbcr_conversion>
+
+  <!-- False color supression -->
+  <false_color>
+    <strength1>0</strength1>
+    <strength2>16</strength2>
+    <filter_mix_cw>8</filter_mix_cw>
+    <filter_desat_cw>64</filter_desat_cw>
+    <filter_mix_lo>2000</filter_mix_lo>
+    <filter_mix_hi>3000</filter_mix_hi>
+    <filter_desat_lo>65535</filter_desat_lo>
+    <filter_desat_hi>65535</filter_desat_hi>
+  </false_color>
+
+  <!-- Local tone mapping -->
+  <local_tone_mapping>
+
+    <gf_en>false</gf_en>
+    <k_hp>96</k_hp>
+    <k_color>16</k_color>
+    <epsilon>10485</epsilon>
+    <div_sat>1835008</div_sat>
+    <abscissae_b>0  128  256  512  1024  1536  2048  4096  8192 16384 32768 65535</abscissae_b>
+    <ordinates_b>0 1656 3312 6616 13232 19848 26464 52928 57504 61680 64024 65535</ordinates_b>
+    <abscissae_d>   0  128  256  512 1024 1536 2048 4096 8192 16384 32768 65535</abscissae_d>
+    <ordinates_d>1656 1656 3304 6616 6616 6616 6616 4576 4176  2344  1512  1512</ordinates_d>
+    <gaussian_lpf>
+        0     0     2     8    14     8     2     0     0
+        0     5    63   281   463   281    63     5     0
+        2    63   764  3425  5646  3425   764    63     2
+        8   281  3425 15349 25306 15349  3425   281     8
+       14   463  5646 25306 41722 25306  5646   463    14
+        8   281  3425 15349 25306 15349  3425   281     8
+        2    63   764  3425  5646  3425   764    63     2
+        0     5    63   281   463   281    63     5     0
+        0     0     2     8    14     8     2     0     0
+    </gaussian_lpf>
+
+  </local_tone_mapping>
+
+  <!-- Tone mapping -->
+  <tone_mapping>
+    <abscissae_y>0 65535 65535</abscissae_y>
+    <ordinates_y>0 65535 65535</ordinates_y>
+  </tone_mapping>
+
+  <!-- Chrominance stretch -->
+  <chrominance_stretch>
+    <abscissae_u>-32768 -16384 16384 32767</abscissae_u>
+    <ordinates_u>     0  16384 49152 65535</ordinates_u>
+    <abscissae_v>-32768 -16384 16384 32767</abscissae_v>
+    <ordinates_v>     0  16384 49152 65535</ordinates_v>
+  </chrominance_stretch>
+
+  <!-- Color conversion -->
+  <color_conversion>
+    <matrix>1190  1  1638  1189  -399  -830  1190  2065  2</matrix>
+    <offsets>-52441 39346 -66138</offsets>
+  </color_conversion>
+
+  <!-- Low resolution resize -->
+  <lr_resize>
+    <output_width>640</output_width>
+    <output_height>480</output_height>
+    <shift>0</shift>
+  </lr_resize>
+
+  <!-- Low resolution output -->
+  <lores_output>
+    <shift>8</shift>
+    <data_format>420</data_format>
+    <output_width>0</output_width>
+    <vflip>false</vflip>
+    <big_endian>false</big_endian>
+    <sat_depth>0</sat_depth>
+  </lores_output>
+
+</common_config>
+</isp_config>

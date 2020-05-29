@@ -1,0 +1,2 @@
+default:arm,mcudrv,adcdrv,candrv,pwmdrv,lindrv,dmadrv,gpiodrv,pinmuxdrv,spidrv,flashdrv,ccudrv,timdrv,uartdrv,wdtdrv,ethcntlr,ethxcvr,vtmondrv,utils,dbgmem,i2cdrv
+config1:arm,drivers

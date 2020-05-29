@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="lin_qt">
+        <opt>ENABLE_LIN</opt>
+        <opt>ENABLE_LIN_TEST</opt>
+
+        <event>LIN_Schedule_Tbl_Alarm_Event</event>
+
+        <task name="LINIT1_Task">
+            <priority>2</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+            <event>LIN_Schedule_Tbl_Alarm_Event</event>
+        </task>
+
+        <alarm
+            name="LIN_Schedule_Tbl_Alarm"
+            counter="SystemTimer"
+            callback="LIN_ScheduleTblAlarm_Cb">
+            <autostart>false</autostart>
+            <alarmtime>0</alarmtime>
+            <cycletime>0</cycletime>
+        </alarm>
+    </comp>
+</brcm_cfg>

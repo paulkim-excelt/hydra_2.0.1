@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+ Copyright 2017-2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+-->
+<brcm_cfg>
+    <comp name="vidxmtr">
+        <include>multimedia/camera/component/config/camera.xml</include>
+        <include>multimedia/pp/ldc/config/ldc.xml</include>
+        <include>multimedia/pp/avce/config/avce.xml</include>
+        <include>ethernet/1722/os/erika/talker/avb_talker.xml</include>
+        <include>ethernet/802.1as/os/erika/ets.xml</include>
+
+        <opt>ENABLE_MEDIA_FRAMEWORK</opt>
+        <opt>AVCE_ENABLE_LOW_COMPLEXITY</opt>
+        <opt>ENABLE_FQTSS</opt>
+
+        <task name="VidXmtr">
+            <priority>11</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+            <event>SystemEvent0</event> <!--Shell Stop Event-->
+            <event>SystemEvent1</event> <!--Media Framework event-->
+            <event>SystemEvent2</event> <!--Statistics event-->
+        </task>
+
+        <cfg pid="0x5" imgid="0xCC00" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/mode.img"/>
+        <cfg pid="0x5" imgid="0xCC10" maxsz="0x6000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/isp.img"/>
+        <cfg pid="0x5" imgid="0xCC20" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/unicam.img"/>
+        <cfg pid="0x5" imgid="0xCC30" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/camera_sensor_common.img"/>
+        <cfg pid="0x5" imgid="0xCC31" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/camera_sensor_mode_video.img"/>
+        <cfg pid="0x5" imgid="0xCC40" maxsz="0xe000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/tuner.img"/>
+        <cfg pid="0x5" imgid="0xCC01" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1080p_16_dcg_12_vs_isp_hdr/mode.img"/>
+        <cfg pid="0x5" imgid="0xCC11" maxsz="0x6000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1080p_16_dcg_12_vs_isp_hdr/isp.img"/>
+        <cfg pid="0x5" imgid="0xCC21" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1080p_16_dcg_12_vs_isp_hdr/unicam.img"/>
+        <cfg pid="0x5" imgid="0xCC32" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1080p_16_dcg_12_vs_isp_hdr/camera_sensor_common.img"/>
+        <cfg pid="0x5" imgid="0xCC33" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1080p_16_dcg_12_vs_isp_hdr/camera_sensor_mode_video.img"/>
+        <cfg pid="0x5" imgid="0xCC41" maxsz="0xe000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1080p_16_dcg_12_vs_isp_hdr/tuner.img"/>
+        <cfg pid="0x5" imgid="0xCC02" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1280p_16_dcg_12_vs_isp_hdr/mode.img"/>
+        <cfg pid="0x5" imgid="0xCC12" maxsz="0x6000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1280p_16_dcg_12_vs_isp_hdr/isp.img"/>
+        <cfg pid="0x5" imgid="0xCC22" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1280p_16_dcg_12_vs_isp_hdr/unicam.img"/>
+        <cfg pid="0x5" imgid="0xCC34" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1280p_16_dcg_12_vs_isp_hdr/camera_sensor_common.img"/>
+        <cfg pid="0x5" imgid="0xCC35" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1280p_16_dcg_12_vs_isp_hdr/camera_sensor_mode_video.img"/>
+        <cfg pid="0x5" imgid="0xCC42" maxsz="0xe000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_1280p_16_dcg_12_vs_isp_hdr/tuner.img"/>
+        <cfg pid="0x5" imgid="0xDC00" maxsz="0x1000"  file="multimedia/pp/ldc/config/ldc_config_ox3a_720p_ds_1mp.bin"/>
+        <cfg pid="0x5" imgid="0xEE00" maxsz="0x1000"  file="multimedia/pp/avce/config/avce_bp_720p_30fps_30mbps_1mp.bin"/>
+        <cfg pid="0x5" imgid="0xEE01" maxsz="0x1000"  file="multimedia/pp/avce/config/avce_bp_1080p_30fps_50mbps_2mp.bin"/>
+        <cfg pid="0x5" imgid="0xEE02" maxsz="0x1000"  file="multimedia/pp/avce/config/avce_bp_1620x1280_30fps_40mbps_2mp.bin"/>
+        <cfg pid="0x5" imgid="0xEE10" maxsz="0x6000"  file="multimedia/pp/avce/config/avce_baseline_mp_new.bin"/>
+        <cfg pid="0x5" imgid="0xAA00" maxsz="0x1000"  file="ethernet/1722/config/avb_talker_config.bin"/>
+        <cfg pid="0x5" imgid="0xBC20" maxsz="0x1000"  file="ethernet/802.1as/config/ets_endpt_gm.bin"/>
+    </comp>
+</brcm_cfg>

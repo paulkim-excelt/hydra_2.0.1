@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="adc_qt">
+        <opt>ENABLE_ADC</opt>
+        <opt>ENABLE_ADC_TEST</opt>
+
+        <event>ADCIT_Event</event>
+
+        <task name="ADCIT_Task">
+            <priority>4</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+            <event>ADCIT_Event</event>
+        </task>
+    </comp>
+</brcm_cfg>

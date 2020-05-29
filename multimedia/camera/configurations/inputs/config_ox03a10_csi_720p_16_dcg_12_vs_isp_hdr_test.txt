@@ -1,0 +1,3 @@
+isp_hv_dpf_file: inputs/isp/ox03a10_csi_720p_16_dcg_12_vs_isp_hdr_test.mod
+sensor_file:  inputs/sensor/ox03a10_csi_720p_16_dcg_12_vs_isp_hdr_test.txt
+end

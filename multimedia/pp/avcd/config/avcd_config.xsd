@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+ <!--    <xs:sequence> -->
+ <!--    </xs:sequence> -->
+
+<xs:element name="avcd_cfg">
+  <xs:complexType>
+    <xs:all>
+        <xs:element name="width" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="height" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="num_ppcores" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="profile" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="level" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+    </xs:all>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

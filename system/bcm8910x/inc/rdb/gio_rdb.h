@@ -1,0 +1,328 @@
+/*****************************************************************************
+ Copyright 2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+******************************************************************************/
+/**
+    @file gio_rdb.h
+    @brief RDB File for GIO
+
+    @version 2018May25_rdb
+*/
+
+#ifndef GIO_RDB_H
+#define GIO_RDB_H
+
+#include <stdint.h>
+
+#include <compiler.h>
+
+
+typedef uint8_t GIO_RESERVED_TYPE;
+
+
+
+
+typedef uint32_t GIO_GPIO_DIN_FULL_ACCESS_TYPE;
+#define GIO_GPIO_DIN_FULL_ACCESS_DATA_IN_MASK (0xffffffffUL)
+#define GIO_GPIO_DIN_FULL_ACCESS_DATA_IN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_DOUT_FULL_ACCESS_TYPE;
+#define GIO_GPIO_DOUT_FULL_ACCESS_DATA_OUT_MASK (0xffffffffUL)
+#define GIO_GPIO_DOUT_FULL_ACCESS_DATA_OUT_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_DRV_EN_FULL_ACCESS_TYPE;
+#define GIO_GPIO_DRV_EN_FULL_ACCESS_EN_MASK (0xffffffffUL)
+#define GIO_GPIO_DRV_EN_FULL_ACCESS_EN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_TYP_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_TYP_FULL_ACCESS_TYP_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_TYP_FULL_ACCESS_TYP_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_DU_EDG_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_DU_EDG_FULL_ACCESS_EDGE_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_DU_EDG_FULL_ACCESS_EDGE_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_EDG_LVL_SEL_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_EDG_LVL_SEL_FULL_ACCESS_EDGE_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_EDG_LVL_SEL_FULL_ACCESS_EDGE_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_MSK_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_MSK_FULL_ACCESS_MSK_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_MSK_FULL_ACCESS_MSK_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_STS_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_STS_FULL_ACCESS_STS_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_STS_FULL_ACCESS_STS_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_MSK_STS_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_MSK_STS_FULL_ACCESS_STS_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_MSK_STS_FULL_ACCESS_STS_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_CLR_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_CLR_FULL_ACCESS_CLR_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_CLR_FULL_ACCESS_CLR_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GP_AUX_SEL_FULL_ACCESS_TYPE;
+#define GIO_GP_AUX_SEL_FULL_ACCESS_GPIO_MUX_SEL_MASK (0xffffffffUL)
+#define GIO_GP_AUX_SEL_FULL_ACCESS_GPIO_MUX_SEL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_SEC_CFG_FULL_ACCESS_TYPE;
+#define GIO_GPIO_SEC_CFG_FULL_ACCESS_CFG_MASK (0xffUL)
+#define GIO_GPIO_SEC_CFG_FULL_ACCESS_CFG_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INIT_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INIT_FULL_ACCESS_VAL_MASK (0xffffffffUL)
+#define GIO_GPIO_INIT_FULL_ACCESS_VAL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_PAD_RES_FULL_ACCESS_TYPE;
+#define GIO_GPIO_PAD_RES_FULL_ACCESS_RES_MASK (0xffffffffUL)
+#define GIO_GPIO_PAD_RES_FULL_ACCESS_RES_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_PAD_RESIS_EN_FULL_ACCESS_TYPE;
+#define GIO_GPIO_PAD_RESIS_EN_FULL_ACCESS_EN_MASK (0xffffffffUL)
+#define GIO_GPIO_PAD_RESIS_EN_FULL_ACCESS_EN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_TST_IN_FULL_ACCESS_TYPE;
+#define GIO_GPIO_TST_IN_FULL_ACCESS_IN_MASK (0xffffffffUL)
+#define GIO_GPIO_TST_IN_FULL_ACCESS_IN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_TST_OUT_FULL_ACCESS_TYPE;
+#define GIO_GPIO_TST_OUT_FULL_ACCESS_OUT_MASK (0xffffffffUL)
+#define GIO_GPIO_TST_OUT_FULL_ACCESS_OUT_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_TST_IN_EN_FULL_ACCESS_TYPE;
+#define GIO_GPIO_TST_IN_EN_FULL_ACCESS_EN_MASK (0xffffffffUL)
+#define GIO_GPIO_TST_IN_EN_FULL_ACCESS_EN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPFTSFA_TYPE;
+#define GIO_GPFTSFA_GPIO_PWR_FAIL_TRI_STS_MASK (0xffffffffUL)
+#define GIO_GPFTSFA_GPIO_PWR_FAIL_TRI_STS_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_PWR_FAIL_TRI_EN_GIO1_TYPE;
+#define GIO_GPIO_PWR_FAIL_TRI_EN_GIO1_EN_MASK (0xffUL)
+#define GIO_GPIO_PWR_FAIL_TRI_EN_GIO1_EN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_HYSTER_EN_FULL_ACCESS_TYPE;
+#define GIO_GPIO_HYSTER_EN_FULL_ACCESS_EN_MASK (0xffffffffUL)
+#define GIO_GPIO_HYSTER_EN_FULL_ACCESS_EN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_SLEW_CTRL_FULL_ACCESS_TYPE;
+#define GIO_GPIO_SLEW_CTRL_FULL_ACCESS_CTRL_MASK (0xffffffffUL)
+#define GIO_GPIO_SLEW_CTRL_FULL_ACCESS_CTRL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_DRV_SEL_0_FULL_ACCESS_TYPE;
+#define GIO_GPIO_DRV_SEL_0_FULL_ACCESS_0_MASK (0xffffffffUL)
+#define GIO_GPIO_DRV_SEL_0_FULL_ACCESS_0_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_DRV_SEL_1_FULL_ACCESS_TYPE;
+#define GIO_GPIO_DRV_SEL_1_FULL_ACCESS_1_MASK (0xffffffffUL)
+#define GIO_GPIO_DRV_SEL_1_FULL_ACCESS_1_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_DRV_SEL_2_FULL_ACCESS_TYPE;
+#define GIO_GPIO_DRV_SEL_2_FULL_ACCESS_2_MASK (0xffffffffUL)
+#define GIO_GPIO_DRV_SEL_2_FULL_ACCESS_2_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_AUX01_SEL_FULL_ACCESS_TYPE;
+#define GIO_GPIO_AUX01_SEL_FULL_ACCESS_SEL_MASK (0xffffffffUL)
+#define GIO_GPIO_AUX01_SEL_FULL_ACCESS_SEL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_MSK_A_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_MSK_A_FULL_ACCESS_A_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_MSK_A_FULL_ACCESS_A_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_MSK_B_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_MSK_B_FULL_ACCESS_B_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_MSK_B_FULL_ACCESS_B_SHIFT (0UL)
+
+
+
+
+typedef uint32_t GIO_GPIO_INT_MSK_C_FULL_ACCESS_TYPE;
+#define GIO_GPIO_INT_MSK_C_FULL_ACCESS_C_MASK (0xffffffffUL)
+#define GIO_GPIO_INT_MSK_C_FULL_ACCESS_C_SHIFT (0UL)
+
+
+
+
+typedef volatile struct COMP_PACKED _GIO_RDBType {
+    GIO_RESERVED_TYPE rsvd0[2048]; /* OFFSET: 0x0 */
+    GIO_GPIO_DIN_FULL_ACCESS_TYPE din; /* OFFSET: 0x800 */
+    GIO_GPIO_DOUT_FULL_ACCESS_TYPE dout; /* OFFSET: 0x804 */
+    GIO_GPIO_DRV_EN_FULL_ACCESS_TYPE drv_en; /* OFFSET: 0x808 */
+    GIO_GPIO_INT_TYP_FULL_ACCESS_TYPE int_typ; /* OFFSET: 0x80c */
+    GIO_GPIO_INT_DU_EDG_FULL_ACCESS_TYPE int_du_edg; /* OFFSET: 0x810 */
+    GIO_GPIO_INT_EDG_LVL_SEL_FULL_ACCESS_TYPE int_edg_lvl_sel; /* OFFSET: 0x814 */
+    GIO_GPIO_INT_MSK_FULL_ACCESS_TYPE int_msk; /* OFFSET: 0x818 */
+    GIO_GPIO_INT_STS_FULL_ACCESS_TYPE int_sts; /* OFFSET: 0x81c */
+    GIO_GPIO_INT_MSK_STS_FULL_ACCESS_TYPE int_msk_sts; /* OFFSET: 0x820 */
+    GIO_GPIO_INT_CLR_FULL_ACCESS_TYPE int_clr; /* OFFSET: 0x824 */
+    GIO_GP_AUX_SEL_FULL_ACCESS_TYPE aux_sel; /* OFFSET: 0x828 */
+    GIO_GPIO_SEC_CFG_FULL_ACCESS_TYPE sec_cfg; /* OFFSET: 0x82c */
+    GIO_GPIO_INIT_FULL_ACCESS_TYPE init; /* OFFSET: 0x830 */
+    GIO_GPIO_PAD_RES_FULL_ACCESS_TYPE pad_res; /* OFFSET: 0x834 */
+    GIO_GPIO_PAD_RESIS_EN_FULL_ACCESS_TYPE pad_resis_en; /* OFFSET: 0x838 */
+    GIO_GPIO_TST_IN_FULL_ACCESS_TYPE tst_in; /* OFFSET: 0x83c */
+    GIO_GPIO_TST_OUT_FULL_ACCESS_TYPE tst_out; /* OFFSET: 0x840 */
+    GIO_GPIO_TST_IN_EN_FULL_ACCESS_TYPE tst_in_en; /* OFFSET: 0x844 */
+    GIO_RESERVED_TYPE reserved_0[4]; /* OFFSET: 0x848 */
+    GIO_RESERVED_TYPE reserved_1[4]; /* OFFSET: 0x84c */
+    GIO_GPFTSFA_TYPE pwr_fail_tri_sts; /* OFFSET: 0x850 */
+    GIO_GPIO_PWR_FAIL_TRI_EN_GIO1_TYPE pwr_fail_tri_en; /* OFFSET: 0x854 */
+    GIO_GPIO_HYSTER_EN_FULL_ACCESS_TYPE hyster_en; /* OFFSET: 0x858 */
+    GIO_GPIO_SLEW_CTRL_FULL_ACCESS_TYPE slew_ctrl; /* OFFSET: 0x85c */
+    GIO_GPIO_DRV_SEL_0_FULL_ACCESS_TYPE drv_sel_0; /* OFFSET: 0x860 */
+    GIO_GPIO_DRV_SEL_1_FULL_ACCESS_TYPE drv_sel_1; /* OFFSET: 0x864 */
+    GIO_GPIO_DRV_SEL_2_FULL_ACCESS_TYPE drv_sel_2; /* OFFSET: 0x868 */
+    GIO_GPIO_AUX01_SEL_FULL_ACCESS_TYPE aux01_sel; /* OFFSET: 0x86c */
+    GIO_RESERVED_TYPE rsvd1[56]; /* OFFSET: 0x870 */
+    GIO_GPIO_INT_MSK_A_FULL_ACCESS_TYPE int_msk_a; /* OFFSET: 0x8a8 */
+    GIO_GPIO_INT_MSK_B_FULL_ACCESS_TYPE int_msk_b; /* OFFSET: 0x8ac */
+    GIO_GPIO_INT_MSK_C_FULL_ACCESS_TYPE int_msk_c; /* OFFSET: 0x8b0 */
+} GIO_RDBType;
+
+
+#define GIO0_BASE                       (0x40018000UL)
+
+#define GIO1_BASE                       (0x40019000UL)
+
+
+
+#define GIO_MAX_HW_ID                   (2UL)
+
+
+#define GIO_PORT_SHIFT                  (5UL)
+
+
+#define GIO_PINS_PER_PORT               (32UL)
+
+
+#define GIO_PAD_RES_EN                  (1UL)
+
+
+#define GIO_PAD_RES_PULL_UP             (1UL)
+
+
+#define GIO_SLEW_NORMAL_SPEED           (1UL)
+
+
+#define GIO_AUXSEL_AUX                  (1UL)
+
+#endif /* GIO_RDB_H */

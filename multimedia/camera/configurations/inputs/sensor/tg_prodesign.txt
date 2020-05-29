@@ -1,0 +1,35 @@
+sensor_details:
+    sensor_name: TG
+    interface: TG
+    endianness: BE
+end
+
+common_mode_details:
+    width: 1280
+    height: 720
+    format: RAW12
+    fps_high: 5
+    fps_low: 5
+    line_length: 29444
+    hdr: FALSE
+    metadata_before_frame: 0
+    metadata_after_frame: 0
+    dpcm_decode: NONE
+    unpack: NONE
+end
+
+interface_details
+    clock_frequency: 200000000
+    pre_blank_period: 0
+    mode: TC
+    cfg_by_pass: FALSE
+    chan: ZERO
+    bayer: RGGB
+    distort_enable: FALSE
+    translate_enable: FALSE
+    block_y_size: 0
+    block_x_size: 0
+    blank_prescale: 0
+    max: 8
+    min: 0
+end

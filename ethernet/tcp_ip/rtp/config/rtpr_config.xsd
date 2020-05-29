@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name ="Hex64StringType">
+        <xs:restriction base = "xs:string">
+            <xs:pattern value = "0x[0-9A-Fa-f]{16}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name ="Hex32StringType">
+        <xs:restriction base = "xs:string">
+            <xs:pattern value = "0x[0-9A-Fa-f]{8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "mediaFormatType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "H264_VIDEO"/>
+            <xs:enumeration value = "PCM_AUDIO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "payloadFormatType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "FORMAT_UNDEFINED"/>
+            <xs:enumeration value = "FORMAT_FU_A_SLICE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "rtpPayloadIDType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "ID_0"/>
+            <xs:enumeration value = "ID_1"/>
+            <xs:enumeration value = "ID_2"/>
+            <xs:enumeration value = "ID_3"/>
+            <xs:enumeration value = "ID_4"/>
+            <xs:enumeration value = "ID_5"/>
+            <xs:enumeration value = "ID_6"/>
+            <xs:enumeration value = "ID_7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name = "rtcpPayloadIDType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value = "ID_0"/>
+            <xs:enumeration value = "ID_1"/>
+            <xs:enumeration value = "ID_2"/>
+            <xs:enumeration value = "ID_3"/>
+            <xs:enumeration value = "ID_4"/>
+            <xs:enumeration value = "ID_5"/>
+            <xs:enumeration value = "ID_6"/>
+            <xs:enumeration value = "ID_7"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name = "rtp_portType">
+        <xs:sequence>
+            <xs:element
+                name = "mediaFormat" type = "mediaFormatType"
+                />
+            <xs:element
+                name = "SSRC" type = "Hex32StringType"
+                />
+            <xs:element
+                name = "payloadFormat" type = "payloadFormatType"
+                />
+            <xs:element
+                name = "rtpPayloadID" type = "rtpPayloadIDType"
+                />
+            <xs:element
+                name = "rtcpPayloadID" type = "rtcpPayloadIDType"
+                />
+        </xs:sequence>
+    </xs:complexType>
+
+<xs:element name="rtpr_cfg">
+  <xs:complexType>
+    <xs:sequence>
+        <xs:element
+            name = "rtp_port"
+            type = "rtp_portType"
+            minOccurs = "1"
+            maxOccurs = "4"
+            />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

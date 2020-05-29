@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+Copyright 2017-2018 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an"Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED"AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+-->
+<brcm_cfg>
+    <comp name="openvx_test">
+        <include>multimedia/pp/pplib/config/pp.xml</include>
+        <task name="OpenVXTest">
+            <priority>2</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+            <event>SystemEvent0</event>
+            <event>OpenVXEvent</event>
+            <event>PP_GPEvent</event>
+        </task>
+        <cfg pid="0x5" imgid="0xAC10" maxsz="0x40000" file="multimedia/pp/openvx/config/vid_vmp_cv.bin"/>
+        <cfg pid="0x5" imgid="0xAC11" maxsz="0x10000" file="multimedia/pp/openvx/config/openvx_table.bin"/>
+        <cfg pid="0x5" imgid="0xFF00" maxsz="0x8000" file="multimedia/pp/openvx/config/tests/qualification/scale_test_scale.bin"/>
+        <cfg pid="0x5" imgid="0xFF01" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/arith_test_arithu8.bin"/>
+        <cfg pid="0x5" imgid="0xFF02" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/arith_test_ariths16.bin"/>
+        <cfg pid="0x5" imgid="0xFF03" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/arith_test_arithu8s.bin"/>
+        <cfg pid="0x5" imgid="0xFF04" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/arith_test_ariths16s.bin"/>
+        <cfg pid="0x5" imgid="0xFF05" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/filter_test_filter.bin"/>
+        <cfg pid="0x5" imgid="0xFF06" maxsz="0x10000" file="multimedia/pp/openvx/tests/qualification/filter_test_input_256x256_u8.bin"/>
+        <cfg pid="0x5" imgid="0xFF07" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/hist_test_hist.bin"/>
+        <cfg pid="0x5" imgid="0xFF08" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/threshold_test_thresholdBinary.bin"/>
+        <cfg pid="0x5" imgid="0xFF09" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/morph_test_morphU8.bin"/>
+        <cfg pid="0x5" imgid="0xFF0A" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/morph_test_morphU16.bin"/>
+        <cfg pid="0x5" imgid="0xFF0B" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/morph_test_morphS32.bin"/>
+        <cfg pid="0x5" imgid="0xFF0C" maxsz="0x10000" file="multimedia/pp/openvx/tests/qualification/morph_test_inputimg_256x256_u8.bin"/>
+        <cfg pid="0x5" imgid="0xFF0D" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmRGB.bin"/>
+        <cfg pid="0x5" imgid="0xFF0E" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmRGBX.bin"/>
+        <cfg pid="0x5" imgid="0xFF0F" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmBGR.bin"/>
+        <cfg pid="0x5" imgid="0xFF10" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmBGRX.bin"/>
+        <cfg pid="0x5" imgid="0xFF11" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmNV12.bin"/>
+        <cfg pid="0x5" imgid="0xFF12" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmNV21.bin"/>
+        <cfg pid="0x5" imgid="0xFF13" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmYUYV.bin"/>
+        <cfg pid="0x5" imgid="0xFF14" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/colorconvert_test_clrConvfrmUYVY.bin"/>
+        <cfg pid="0x5" imgid="0xFF15" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/bitdepthConv_test_bitdepthConv.bin"/>
+        <cfg pid="0x5" imgid="0xFF16" maxsz="0x20000" file="multimedia/pp/openvx/config/pedestrian_detect/pedestrian_detect_process.bin"/>
+        <cfg pid="0x5" imgid="0xFF17" maxsz="0x20000" file="multimedia/pp/openvx/tests/qualification/filter_test_input_256x256_s16.bin"/>
+        <cfg pid="0x5" imgid="0xFF18" maxsz="0x4000" file="multimedia/pp/openvx/config/optical_flow/opticalflow_process.bin"/>
+        <cfg pid="0x5" imgid="0xFF19" maxsz="0x4000" file="multimedia/pp/openvx/config/optical_flow/opticalflow_process.bin"/>
+        <cfg pid="0x5" imgid="0xFF1A" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/integralImg_test_integralImg.bin"/>
+        <cfg pid="0x5" imgid="0xFF1B" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/accumulateImg_test_accumImg.bin"/>
+        <cfg pid="0x5" imgid="0xFF1C" maxsz="0x8000" file="multimedia/pp/openvx/config/tests/qualification/pyramid_test_gaussianPyramid.bin"/>
+        <cfg pid="0x5" imgid="0xFF1D" maxsz="0x8000" file="multimedia/pp/openvx/config/tests/qualification/halfscaleGaussian_test_hlfsclGaussian.bin"/>
+        <cfg pid="0x5" imgid="0xFF1E" maxsz="0x4000" file="multimedia/pp/openvx/config/tests/qualification/lp_recon_test_laplacianPyrdRecon.bin"/>
+        <cfg pid="0x5" imgid="0xFF1F" maxsz="0x10000" file="multimedia/pp/openvx/config/face_detect/face_detect_process.bin"/>
+        <cfg pid="0x5" imgid="0xFF20" maxsz="0xe1000" file="multimedia/pp/openvx/tests/qualification/fd_in.bin"/>
+        <cfg pid="0x5" imgid="0xFF21" maxsz="0x10000" file="multimedia/pp/openvx/config/tests/qualification/cropnscale_test_cropnscale.bin"/>
+    </comp>
+</brcm_cfg>

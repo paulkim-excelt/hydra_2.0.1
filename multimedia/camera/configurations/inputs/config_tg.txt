@@ -1,0 +1,4 @@
+isp_hv_dpf_file: inputs/isp/tg_12b_dpf.mod
+sensor_file:  inputs/sensor/tg.txt
+end
+

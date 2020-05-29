@@ -1,0 +1,1 @@
+INCLUDE chip/common/sram_only.ld

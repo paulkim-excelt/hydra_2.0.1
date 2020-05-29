@@ -1,0 +1,438 @@
+/*****************************************************************************
+ Copyright 2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+******************************************************************************/
+/**
+    @file avt_rdb.h
+    @brief RDB File for AVT
+
+    @version 2018May25_rdb
+*/
+
+#ifndef AVT_RDB_H
+#define AVT_RDB_H
+
+#include <stdint.h>
+
+#include <compiler.h>
+
+
+typedef uint32_t AVT_MTSCTRL_TYPE;
+#define AVT_MTSCTRL_MTS_PRESENT_TRIG_EN_MASK (0x40UL)
+#define AVT_MTSCTRL_MTS_PRESENT_TRIG_EN_SHIFT (6UL)
+#define AVT_MTSCTRL_MTS_PRESCALER_SEL_MASK (0x30UL)
+#define AVT_MTSCTRL_MTS_PRESCALER_SEL_SHIFT (4UL)
+#define AVT_MTSCTRL_MTS_TRIG_SEL_MASK (0xcUL)
+#define AVT_MTSCTRL_MTS_TRIG_SEL_SHIFT (2UL)
+#define AVT_MTSCTRL_MTS_CK_SEL_MASK (0x3UL)
+#define AVT_MTSCTRL_MTS_CK_SEL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_MTS_PRESENT_TRIG_VAL_LOW_TYPE;
+#define AVT_MTS_PRESENT_TRIG_VAL_LOW_PRESENTATION_LOW_MASK (0xffffffffUL)
+#define AVT_MTS_PRESENT_TRIG_VAL_LOW_PRESENTATION_LOW_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_MTS_PRESENT_TRIG_VAL_HIGH_TYPE;
+#define AVT_MTS_PRESENT_TRIG_VAL_HIGH_PRESENTATION_HIGH_MASK (0xffffffffUL)
+#define AVT_MTS_PRESENT_TRIG_VAL_HIGH_PRESENTATION_HIGH_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_MTS_MEDIA_TRIG_VAL_LOW_TYPE;
+#define AVT_MTS_MEDIA_TRIG_VAL_LOW_LOW_MASK (0xffffffffUL)
+#define AVT_MTS_MEDIA_TRIG_VAL_LOW_LOW_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_MTS_MEDIA_TRIG_VAL_HIGH_TYPE;
+#define AVT_MTS_MEDIA_TRIG_VAL_HIGH_HIGH_MASK (0xffffffffUL)
+#define AVT_MTS_MEDIA_TRIG_VAL_HIGH_HIGH_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_MTS_MEDIA_PERIODIC_TRIG_VAL_TYPE;
+#define AVT_MTS_MEDIA_PERIODIC_TRIG_VAL_VAL_MASK (0xffffffffUL)
+#define AVT_MTS_MEDIA_PERIODIC_TRIG_VAL_VAL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_TIMESTAMP_LOW_TYPE;
+#define AVT_TIMESTAMP_LOW_LOW_MASK (0xffffffffUL)
+#define AVT_TIMESTAMP_LOW_LOW_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_TIMESTAMP_HIGH_TYPE;
+#define AVT_TIMESTAMP_HIGH_HIGH_MASK (0xffffffffUL)
+#define AVT_TIMESTAMP_HIGH_HIGH_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_TAKE_TS_TYPE;
+#define AVT_TAKE_TS_TS_MASK (0x1UL)
+#define AVT_TAKE_TS_TS_SHIFT (0UL)
+
+
+
+
+typedef uint8_t AVT_RESERVED_TYPE;
+
+
+
+
+typedef uint32_t AVT_MTSCTRL_3_TYPE;
+#define AVT_MTSCTRL_3_P1588_SYNC_EN_MASK (0x100UL)
+#define AVT_MTSCTRL_3_P1588_SYNC_EN_SHIFT (8UL)
+#define AVT_MTSCTRL_3_MEDIA_EN_MASK (0x80UL)
+#define AVT_MTSCTRL_3_MEDIA_EN_SHIFT (7UL)
+#define AVT_MTSCTRL_3_MTS_PRESENT_TRIG_EN_MASK (0x40UL)
+#define AVT_MTSCTRL_3_MTS_PRESENT_TRIG_EN_SHIFT (6UL)
+#define AVT_MTSCTRL_3_MTS_PRESCALER_SEL_MASK (0x30UL)
+#define AVT_MTSCTRL_3_MTS_PRESCALER_SEL_SHIFT (4UL)
+#define AVT_MTSCTRL_3_MTS_TRIG_SEL_MASK (0xcUL)
+#define AVT_MTSCTRL_3_MTS_TRIG_SEL_SHIFT (2UL)
+#define AVT_MTSCTRL_3_MTS_CK_SEL_MASK (0x3UL)
+#define AVT_MTSCTRL_3_MTS_CK_SEL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_GPEVENT_TAKE_TS_TYPE;
+#define AVT_GPEVENT_TAKE_TS_TS_MASK (0x1UL)
+#define AVT_GPEVENT_TAKE_TS_TS_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_SYS_PERIODIC_IRQ_VAL_TYPE;
+#define AVT_SYS_PERIODIC_IRQ_VAL_SYSTEM_VAL_MASK (0xffffffffUL)
+#define AVT_SYS_PERIODIC_IRQ_VAL_SYSTEM_VAL_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_SYS_CTRL_TYPE;
+#define AVT_SYS_CTRL_RESET_CNTR_MASK (0x1UL)
+#define AVT_SYS_CTRL_RESET_CNTR_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_NCOCTRLA_TYPE;
+#define AVT_NCOCTRLA_DELAY_FORCE_SEL_MASK (0x10000UL)
+#define AVT_NCOCTRLA_DELAY_FORCE_SEL_SHIFT (16UL)
+#define AVT_NCOCTRLA_DELAY_FORCE_VAL_MASK (0x3f00UL)
+#define AVT_NCOCTRLA_DELAY_FORCE_VAL_SHIFT (8UL)
+#define AVT_NCOCTRLA_LUT_SEL_MASK (0x10UL)
+#define AVT_NCOCTRLA_LUT_SEL_SHIFT (4UL)
+#define AVT_NCOCTRLA_BYPASS_DL_MASK (0x8UL)
+#define AVT_NCOCTRLA_BYPASS_DL_SHIFT (3UL)
+#define AVT_NCOCTRLA_REF_CLK_SEL_MASK (0x6UL)
+#define AVT_NCOCTRLA_REF_CLK_SEL_SHIFT (1UL)
+#define AVT_NCOCTRLA_NCO_ENABLE_MASK (0x1UL)
+#define AVT_NCOCTRLA_NCO_ENABLE_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_NCOCTRLB_TYPE;
+#define AVT_NCOCTRLB_FRAC_SHIFT_MASK (0xf0000000UL)
+#define AVT_NCOCTRLB_FRAC_SHIFT_SHIFT (28UL)
+#define AVT_NCOCTRLB_FREQ_MASK (0xfffffffUL)
+#define AVT_NCOCTRLB_FREQ_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_NCOSTATA_TYPE;
+#define AVT_NCOSTATA_REF_DL_CNT_MASK (0x3fUL)
+#define AVT_NCOSTATA_REF_DL_CNT_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_NCO_LUT_0_TYPE;
+#define AVT_NCO_LUT_0_VAL_3_MASK (0x3f000000UL)
+#define AVT_NCO_LUT_0_VAL_3_SHIFT (24UL)
+#define AVT_NCO_LUT_0_VAL_2_MASK (0x3f0000UL)
+#define AVT_NCO_LUT_0_VAL_2_SHIFT (16UL)
+#define AVT_NCO_LUT_0_VAL_1_MASK (0x3f00UL)
+#define AVT_NCO_LUT_0_VAL_1_SHIFT (8UL)
+#define AVT_NCO_LUT_0_VAL_0_MASK (0x3fUL)
+#define AVT_NCO_LUT_0_VAL_0_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_NCO_LUT_1_TYPE;
+#define AVT_NCO_LUT_1_VAL_7_MASK (0x3f000000UL)
+#define AVT_NCO_LUT_1_VAL_7_SHIFT (24UL)
+#define AVT_NCO_LUT_1_VAL_6_MASK (0x3f0000UL)
+#define AVT_NCO_LUT_1_VAL_6_SHIFT (16UL)
+#define AVT_NCO_LUT_1_VAL_5_MASK (0x3f00UL)
+#define AVT_NCO_LUT_1_VAL_5_SHIFT (8UL)
+#define AVT_NCO_LUT_1_VAL_4_MASK (0x3fUL)
+#define AVT_NCO_LUT_1_VAL_4_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_NCO_LUT_2_TYPE;
+#define AVT_NCO_LUT_2_VAL_11_MASK (0x3f000000UL)
+#define AVT_NCO_LUT_2_VAL_11_SHIFT (24UL)
+#define AVT_NCO_LUT_2_VAL_10_MASK (0x3f0000UL)
+#define AVT_NCO_LUT_2_VAL_10_SHIFT (16UL)
+#define AVT_NCO_LUT_2_VAL_9_MASK (0x3f00UL)
+#define AVT_NCO_LUT_2_VAL_9_SHIFT (8UL)
+#define AVT_NCO_LUT_2_VAL_8_MASK (0x3fUL)
+#define AVT_NCO_LUT_2_VAL_8_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_NCO_LUT_3_TYPE;
+#define AVT_NCO_LUT_3_VAL_15_MASK (0x3f000000UL)
+#define AVT_NCO_LUT_3_VAL_15_SHIFT (24UL)
+#define AVT_NCO_LUT_3_VAL_14_MASK (0x3f0000UL)
+#define AVT_NCO_LUT_3_VAL_14_SHIFT (16UL)
+#define AVT_NCO_LUT_3_VAL_13_MASK (0x3f00UL)
+#define AVT_NCO_LUT_3_VAL_13_SHIFT (8UL)
+#define AVT_NCO_LUT_3_VAL_12_MASK (0x3fUL)
+#define AVT_NCO_LUT_3_VAL_12_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_IRQCTRL_TYPE;
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL3_MASK (0x80000UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL3_SHIFT (19UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL2_MASK (0x40000UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL2_SHIFT (18UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL1_MASK (0x20000UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL1_SHIFT (17UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL0_MASK (0x10000UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_SEL0_SHIFT (16UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN3_MASK (0x8000UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN3_SHIFT (15UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN2_MASK (0x4000UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN2_SHIFT (14UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN1_MASK (0x2000UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN1_SHIFT (13UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN0_MASK (0x1000UL)
+#define AVT_IRQCTRL_MEDIA_PRES_TRIG_IRQ_EN0_SHIFT (12UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN3_MASK (0x800UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN3_SHIFT (11UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN2_MASK (0x400UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN2_SHIFT (10UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN1_MASK (0x200UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN1_SHIFT (9UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN0_MASK (0x100UL)
+#define AVT_IRQCTRL_MEDIA_IRQ_EN0_SHIFT (8UL)
+#define AVT_IRQCTRL_SYS_PERIODIC_IRQ_EN_MASK (0x80UL)
+#define AVT_IRQCTRL_SYS_PERIODIC_IRQ_EN_SHIFT (7UL)
+#define AVT_IRQCTRL_SYS_AVB_RX_IRQ_EN_MASK (0x40UL)
+#define AVT_IRQCTRL_SYS_AVB_RX_IRQ_EN_SHIFT (6UL)
+#define AVT_IRQCTRL_SYS_AVB_TX_IRQ_EN_MASK (0x20UL)
+#define AVT_IRQCTRL_SYS_AVB_TX_IRQ_EN_SHIFT (5UL)
+#define AVT_IRQCTRL_SYS_MEDIA_3_IRQ_EN_MASK (0x10UL)
+#define AVT_IRQCTRL_SYS_MEDIA_3_IRQ_EN_SHIFT (4UL)
+#define AVT_IRQCTRL_SYS_MEDIA_2_IRQ_EN_MASK (0x8UL)
+#define AVT_IRQCTRL_SYS_MEDIA_2_IRQ_EN_SHIFT (3UL)
+#define AVT_IRQCTRL_SYS_MEDIA_1_IRQ_EN_MASK (0x4UL)
+#define AVT_IRQCTRL_SYS_MEDIA_1_IRQ_EN_SHIFT (2UL)
+#define AVT_IRQCTRL_SYS_MEDIA_0_IRQ_EN_MASK (0x2UL)
+#define AVT_IRQCTRL_SYS_MEDIA_0_IRQ_EN_SHIFT (1UL)
+#define AVT_IRQCTRL_SYS_GPEVENT_IRQ_EN_MASK (0x1UL)
+#define AVT_IRQCTRL_SYS_GPEVENT_IRQ_EN_SHIFT (0UL)
+
+
+
+
+typedef uint32_t AVT_IRQSTAT_TYPE;
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_3_MASK (0x8000UL)
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_3_SHIFT (15UL)
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_2_MASK (0x4000UL)
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_2_SHIFT (14UL)
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_1_MASK (0x2000UL)
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_1_SHIFT (13UL)
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_0_MASK (0x1000UL)
+#define AVT_IRQSTAT_MTS_PRES_TRIG_IRQ_0_SHIFT (12UL)
+#define AVT_IRQSTAT_MTS_IRQ_3_MASK (0x800UL)
+#define AVT_IRQSTAT_MTS_IRQ_3_SHIFT (11UL)
+#define AVT_IRQSTAT_MTS_IRQ_2_MASK (0x400UL)
+#define AVT_IRQSTAT_MTS_IRQ_2_SHIFT (10UL)
+#define AVT_IRQSTAT_MTS_IRQ_1_MASK (0x200UL)
+#define AVT_IRQSTAT_MTS_IRQ_1_SHIFT (9UL)
+#define AVT_IRQSTAT_MTS_IRQ_0_MASK (0x100UL)
+#define AVT_IRQSTAT_MTS_IRQ_0_SHIFT (8UL)
+#define AVT_IRQSTAT_PERIODIC_IRQ_MASK (0x80UL)
+#define AVT_IRQSTAT_PERIODIC_IRQ_SHIFT (7UL)
+#define AVT_IRQSTAT_AVB_RX_IRQ_MASK (0x40UL)
+#define AVT_IRQSTAT_AVB_RX_IRQ_SHIFT (6UL)
+#define AVT_IRQSTAT_AVB_TX_IRQ_MASK (0x20UL)
+#define AVT_IRQSTAT_AVB_TX_IRQ_SHIFT (5UL)
+#define AVT_IRQSTAT_MEDIA_3_IRQ_MASK (0x10UL)
+#define AVT_IRQSTAT_MEDIA_3_IRQ_SHIFT (4UL)
+#define AVT_IRQSTAT_MEDIA_2_IRQ_MASK (0x8UL)
+#define AVT_IRQSTAT_MEDIA_2_IRQ_SHIFT (3UL)
+#define AVT_IRQSTAT_MEDIA_1_IRQ_MASK (0x4UL)
+#define AVT_IRQSTAT_MEDIA_1_IRQ_SHIFT (2UL)
+#define AVT_IRQSTAT_MEDIA_0_IRQ_MASK (0x2UL)
+#define AVT_IRQSTAT_MEDIA_0_IRQ_SHIFT (1UL)
+#define AVT_IRQSTAT_GPEVENT_IRQ_MASK (0x1UL)
+#define AVT_IRQSTAT_GPEVENT_IRQ_SHIFT (0UL)
+
+
+
+
+typedef volatile struct COMP_PACKED _AVT_RDBType {
+    AVT_MTSCTRL_TYPE mtsctrl_0; /* OFFSET: 0x0 */
+    AVT_MTS_PRESENT_TRIG_VAL_LOW_TYPE mts_present_trig_val_low_0; /* OFFSET: 0x4 */
+    AVT_MTS_PRESENT_TRIG_VAL_HIGH_TYPE mts_present_trig_val_high_0; /* OFFSET: 0x8 */
+    AVT_MTS_MEDIA_TRIG_VAL_LOW_TYPE mts_media_trig_val_low_0; /* OFFSET: 0xc */
+    AVT_MTS_MEDIA_TRIG_VAL_HIGH_TYPE mts_media_trig_val_high_0; /* OFFSET: 0x10 */
+    AVT_MTS_MEDIA_PERIODIC_TRIG_VAL_TYPE mts_media_periodic_trig_val_0; /* OFFSET: 0x14 */
+    AVT_TIMESTAMP_LOW_TYPE mts_media_timestamp_low_0; /* OFFSET: 0x18 */
+    AVT_TIMESTAMP_HIGH_TYPE mts_media_timestamp_high_0; /* OFFSET: 0x1c */
+    AVT_TAKE_TS_TYPE mts_take_ts_0; /* OFFSET: 0x20 */
+    AVT_RESERVED_TYPE rsvd0[476]; /* OFFSET: 0x24 */
+    AVT_MTSCTRL_TYPE mtsctrl_1; /* OFFSET: 0x200 */
+    AVT_MTS_PRESENT_TRIG_VAL_LOW_TYPE mts_present_trig_val_low_1; /* OFFSET: 0x204 */
+    AVT_MTS_PRESENT_TRIG_VAL_HIGH_TYPE mts_present_trig_val_high_1; /* OFFSET: 0x208 */
+    AVT_MTS_MEDIA_TRIG_VAL_LOW_TYPE mts_media_trig_val_low_1; /* OFFSET: 0x20c */
+    AVT_MTS_MEDIA_TRIG_VAL_HIGH_TYPE mts_media_trig_val_high_1; /* OFFSET: 0x210 */
+    AVT_MTS_MEDIA_PERIODIC_TRIG_VAL_TYPE mts_media_periodic_trig_val_1; /* OFFSET: 0x214 */
+    AVT_TIMESTAMP_LOW_TYPE mts_media_timestamp_low_1; /* OFFSET: 0x218 */
+    AVT_TIMESTAMP_HIGH_TYPE mts_media_timestamp_high_1; /* OFFSET: 0x21c */
+    AVT_TAKE_TS_TYPE mts_take_ts_1; /* OFFSET: 0x220 */
+    AVT_RESERVED_TYPE rsvd1[476]; /* OFFSET: 0x224 */
+    AVT_MTSCTRL_TYPE mtsctrl_2; /* OFFSET: 0x400 */
+    AVT_MTS_PRESENT_TRIG_VAL_LOW_TYPE mts_present_trig_val_low_2; /* OFFSET: 0x404 */
+    AVT_MTS_PRESENT_TRIG_VAL_HIGH_TYPE mts_present_trig_val_high_2; /* OFFSET: 0x408 */
+    AVT_MTS_MEDIA_TRIG_VAL_LOW_TYPE mts_media_trig_val_low_2; /* OFFSET: 0x40c */
+    AVT_MTS_MEDIA_TRIG_VAL_HIGH_TYPE mts_media_trig_val_high_2; /* OFFSET: 0x410 */
+    AVT_MTS_MEDIA_PERIODIC_TRIG_VAL_TYPE mts_media_periodic_trig_val_2; /* OFFSET: 0x414 */
+    AVT_TIMESTAMP_LOW_TYPE mts_media_timestamp_low_2; /* OFFSET: 0x418 */
+    AVT_TIMESTAMP_HIGH_TYPE mts_media_timestamp_high_2; /* OFFSET: 0x41c */
+    AVT_TAKE_TS_TYPE mts_take_ts_2; /* OFFSET: 0x420 */
+    AVT_RESERVED_TYPE rsvd2[476]; /* OFFSET: 0x424 */
+    AVT_MTSCTRL_3_TYPE mtsctrl_3; /* OFFSET: 0x600 */
+    AVT_MTS_PRESENT_TRIG_VAL_LOW_TYPE mts_present_trig_val_low_3; /* OFFSET: 0x604 */
+    AVT_MTS_PRESENT_TRIG_VAL_HIGH_TYPE mts_present_trig_val_high_3; /* OFFSET: 0x608 */
+    AVT_MTS_MEDIA_TRIG_VAL_LOW_TYPE mts_media_trig_val_low_3; /* OFFSET: 0x60c */
+    AVT_MTS_MEDIA_TRIG_VAL_HIGH_TYPE mts_media_trig_val_high_3; /* OFFSET: 0x610 */
+    AVT_MTS_MEDIA_PERIODIC_TRIG_VAL_TYPE mts_media_periodic_trig_val_3; /* OFFSET: 0x614 */
+    AVT_TIMESTAMP_LOW_TYPE mts_media_timestamp_low_3; /* OFFSET: 0x618 */
+    AVT_TIMESTAMP_HIGH_TYPE mts_media_timestamp_high_3; /* OFFSET: 0x61c */
+    AVT_TAKE_TS_TYPE mts_take_ts_3; /* OFFSET: 0x620 */
+    AVT_RESERVED_TYPE rsvd3[476]; /* OFFSET: 0x624 */
+    AVT_TIMESTAMP_LOW_TYPE sys_gpevent_timestamp_low; /* OFFSET: 0x800 */
+    AVT_TIMESTAMP_HIGH_TYPE sys_gpevent_timestamp_high; /* OFFSET: 0x804 */
+    AVT_TIMESTAMP_LOW_TYPE sys_media_0_timestamp_low; /* OFFSET: 0x808 */
+    AVT_TIMESTAMP_HIGH_TYPE sys_media_0_timestamp_high; /* OFFSET: 0x80c */
+    AVT_TIMESTAMP_LOW_TYPE sys_media_1_timestamp_low; /* OFFSET: 0x810 */
+    AVT_TIMESTAMP_HIGH_TYPE sys_media_1_timestamp_high; /* OFFSET: 0x814 */
+    AVT_TIMESTAMP_LOW_TYPE sys_media_2_timestamp_low; /* OFFSET: 0x818 */
+    AVT_TIMESTAMP_HIGH_TYPE sys_media_2_timestamp_high; /* OFFSET: 0x81c */
+    AVT_TIMESTAMP_LOW_TYPE sys_media_3_timestamp_low; /* OFFSET: 0x820 */
+    AVT_TIMESTAMP_HIGH_TYPE sys_media_3_timestamp_high; /* OFFSET: 0x824 */
+    AVT_TIMESTAMP_LOW_TYPE sys_avb_tx_timestamp_low; /* OFFSET: 0x828 */
+    AVT_TIMESTAMP_HIGH_TYPE sys_avb_tx_timestamp_high; /* OFFSET: 0x82c */
+    AVT_TIMESTAMP_LOW_TYPE sys_avb_rx_timestamp_low; /* OFFSET: 0x830 */
+    AVT_TIMESTAMP_HIGH_TYPE sys_avb_rx_timestamp_high; /* OFFSET: 0x834 */
+    AVT_GPEVENT_TAKE_TS_TYPE sys_gpevent_take_ts; /* OFFSET: 0x838 */
+    AVT_SYS_PERIODIC_IRQ_VAL_TYPE sys_periodic_irq_val; /* OFFSET: 0x83c */
+    AVT_SYS_CTRL_TYPE sys_ctrl; /* OFFSET: 0x840 */
+    AVT_RESERVED_TYPE rsvd4[444]; /* OFFSET: 0x844 */
+    AVT_NCOCTRLA_TYPE ncoctrla_0; /* OFFSET: 0xa00 */
+    AVT_NCOCTRLB_TYPE ncoctrlb_0; /* OFFSET: 0xa04 */
+    AVT_NCOSTATA_TYPE ncostata_0; /* OFFSET: 0xa08 */
+    AVT_NCO_LUT_0_TYPE nco_lut_0_0; /* OFFSET: 0xa0c */
+    AVT_NCO_LUT_1_TYPE nco_lut_1_0; /* OFFSET: 0xa10 */
+    AVT_NCO_LUT_2_TYPE nco_lut_2_0; /* OFFSET: 0xa14 */
+    AVT_NCO_LUT_3_TYPE nco_lut_3_0; /* OFFSET: 0xa18 */
+    AVT_RESERVED_TYPE rsvd5[228]; /* OFFSET: 0xa1c */
+    AVT_NCOCTRLA_TYPE ncoctrla_1; /* OFFSET: 0xb00 */
+    AVT_NCOCTRLB_TYPE ncoctrlb_1; /* OFFSET: 0xb04 */
+    AVT_NCOSTATA_TYPE ncostata_1; /* OFFSET: 0xb08 */
+    AVT_NCO_LUT_0_TYPE nco_lut_0_1; /* OFFSET: 0xb0c */
+    AVT_NCO_LUT_1_TYPE nco_lut_1_1; /* OFFSET: 0xb10 */
+    AVT_NCO_LUT_2_TYPE nco_lut_2_1; /* OFFSET: 0xb14 */
+    AVT_NCO_LUT_3_TYPE nco_lut_3_1; /* OFFSET: 0xb18 */
+    AVT_RESERVED_TYPE rsvd6[228]; /* OFFSET: 0xb1c */
+    AVT_NCOCTRLA_TYPE ncoctrla_2; /* OFFSET: 0xc00 */
+    AVT_NCOCTRLB_TYPE ncoctrlb_2; /* OFFSET: 0xc04 */
+    AVT_NCOSTATA_TYPE ncostata_2; /* OFFSET: 0xc08 */
+    AVT_NCO_LUT_0_TYPE nco_lut_0_2; /* OFFSET: 0xc0c */
+    AVT_NCO_LUT_1_TYPE nco_lut_1_2; /* OFFSET: 0xc10 */
+    AVT_NCO_LUT_2_TYPE nco_lut_2_2; /* OFFSET: 0xc14 */
+    AVT_NCO_LUT_3_TYPE nco_lut_3_2; /* OFFSET: 0xc18 */
+    AVT_RESERVED_TYPE rsvd7[740]; /* OFFSET: 0xc1c */
+    AVT_IRQCTRL_TYPE irqctrl; /* OFFSET: 0xf00 */
+    AVT_IRQSTAT_TYPE irqstat; /* OFFSET: 0xf04 */
+    AVT_RESERVED_TYPE rsvd8[232]; /* OFFSET: 0xf08 */
+    AVT_RESERVED_TYPE reserved[4]; /* OFFSET: 0xff0 */
+} AVT_RDBType;
+
+
+#define AVT_BASE                        (0x4002C000UL)
+
+
+
+#define AVT_MAX_HW_ID                   (1UL)
+
+
+#define AVT_CLOCK                       (50000000ULL)
+
+
+#define AVT_NCO_REF_CLOCK               (400000000ULL)
+
+#endif /* AVT_RDB_H */

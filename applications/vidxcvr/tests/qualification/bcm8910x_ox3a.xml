@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+ Copyright 2017-2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+-->
+<brcm_cfg>
+    <comp name="vidxcvr_qt">
+        <include>multimedia/camera/component/config/camera.xml</include>
+        <include>multimedia/pp/ldc/config/ldc.xml</include>
+        <include>multimedia/pp/avce/config/avce.xml</include>
+        <include>multimedia/pp/avcd/config/avcd.xml</include>
+        <include>ethernet/1722/os/erika/talker/avb_talker.xml</include>
+        <include>ethernet/1722/os/erika/listener/avb_listener.xml</include>
+        <include>multimedia/display/graphics/config/gfxsrc.xml</include>
+        <include>multimedia/display/vgc/config/display.xml</include>
+
+        <opt>ENABLE_MEDIA_FRAMEWORK</opt>
+        <opt>ENABLE_VGCC_VID_12BPP</opt>
+        <opt>ENABLE_VGCC_GFX_4BPP</opt>
+        <opt>ENABLE_VGC_LVDS</opt>
+        <opt>ENABLE_CAM_MODULE_OX3A10</opt>
+        <opt>ENABLE_GPTP_GRANDMASTER</opt>
+        <opt>ENABLE_VGCC_FRAME</opt>
+        <opt>ENABLE_AVCD_FRAME</opt>
+
+        <task name="VidXcvr_AT">
+            <priority>11</priority>
+            <autostart>false</autostart>
+            <stack>4096</stack>
+            <event>SystemEvent0</event>
+            <event>SystemEvent1</event>
+        </task>
+
+        <alarm name="Test_VidXcvrAlarm" counter="SystemTimer" callback="Test_VidXcvrAlarm_cb">
+            <autostart>true</autostart>
+            <alarmtime>320</alarmtime>
+            <cycletime>320</cycletime>
+        </alarm>
+
+        <cfg pid="0x5" imgid="0xCC00" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/mode.img"/>
+        <cfg pid="0x5" imgid="0xCC10" maxsz="0x6000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/isp.img"/>
+        <cfg pid="0x5" imgid="0xCC20" maxsz="0x1000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/unicam.img"/>
+        <cfg pid="0x5" imgid="0xCC30" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/camera_sensor_common.img"/>
+        <cfg pid="0x5" imgid="0xCC31" maxsz="0x2000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/camera_sensor_mode_colorbar.img"/>
+        <cfg pid="0x5" imgid="0xCC40" maxsz="0xe000"  file="multimedia/camera/configurations/outputs/ox03a10_csi_720p_ds_16_dcg_12_vs_isp_hdr/tuner.img"/>
+        <cfg pid="0x5" imgid="0xDC00" maxsz="0x1000"  file="multimedia/pp/ldc/config/ldc_config_ox3a_720p_ds_1mp.bin"/>
+        <cfg pid="0x5" imgid="0xEE00" maxsz="0x1000"  file="multimedia/pp/avce/config/avce_bp_720p_30fps_30mbps_1mp.bin"/>
+        <cfg pid="0x5" imgid="0xEE10" maxsz="0x6000"  file="multimedia/pp/avce/config/avce_baseline_mp_new.bin"/>
+        <cfg pid="0x5" imgid="0xDE00" maxsz="0x1000"  file="multimedia/pp/avcd/config/avcd_bp_720p_1mp.bin"/>
+        <cfg pid="0x5" imgid="0xAA00" maxsz="0x1000"  file="ethernet/1722/config/avb_talker_config.bin"/>
+        <cfg pid="0x5" imgid="0xAA10" maxsz="0x1000"  file="ethernet/1722/config/avb_listener_config.bin"/>
+	<cfg pid="0x5" imgid="0xFF00" maxsz="0x40000" file="applications/vidxcvr/tests/qualification/rle_ox3a.bin"/>
+    </comp>
+</brcm_cfg>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="dma_qt">
+        <opt>ENABLE_DMA_TEST</opt>
+
+        <task name="TaskDMATest">
+            <priority>2</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+            <event>DMAEvent</event>
+        </task>
+    </comp>
+</brcm_cfg>

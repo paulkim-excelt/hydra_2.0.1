@@ -1,0 +1,450 @@
+/*****************************************************************************
+ Copyright 2016-2019 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+******************************************************************************/
+OS EE {
+    EE_OPT = "__BCM8910X__";
+    EE_OPT = "ENABLE_AVT";
+    EE_OPT = "ENABLE_DBGMEM";
+    EE_OPT = "ENABLE_SHELL";
+    EE_OPT = "ENABLE_WFI";
+    EE_OPT = "ENABLE_UART_PL011";
+    EE_OPT = "ENABLE_UART_CONSOLE";
+    EE_OPT = "ENABLE_MSG_QUEUE";
+    EE_OPT = "ENABLE_IIC_BSC";
+    EE_OPT = "ENABLE_ETH";
+    EE_OPT = "ENABLE_ETH_TIME";
+    EE_OPT = "ENABLE_ETH_AMAC";
+    EE_OPT = "ENABLE_ETH_BRPHY";
+    EE_OPT = "ENABLE_NIF";
+    EE_OPT = "ENABLE_GPIO_GIO_V2";
+    EE_OPT = "ENABLE_PINMUX";
+    EE_OPT = "ENABLE_KLOG";
+    EE_OPT = "ENABLE_ULOG";
+    EE_OPT = "ENABLE_FLASH";
+    EE_OPT = "ENABLE_FLSMGR";
+    EE_OPT = "ENABLE_PTM";
+    EE_OPT = "ENABLE_VTMON";
+    EE_OPT = "ENABLE_CCT";
+    EE_OPT = "ENABLE_PWM";
+    EE_OPT = "ENABLE_DMA330";
+    EE_OPT = "ENABLE_WATCHDOG_SP805";
+    EE_OPT = "ENABLE_SYSTEM_MONITOR";
+    EE_OPT = "P1588_PORT_MASK=0x1UL";
+    EE_OPT = "ETHER_TX_CHAN_CNT=4UL";
+    EE_OPT = "ETHER_RX_CHAN_CNT=1UL";
+    CFLAGS = "-Wall -Werror -Wno-unused-function -ggdb";
+
+    CPU_DATA = CORTEX_MX {
+        MODEL = M7;
+        CPU_CLOCK = 400.0;
+        COMPILER_TYPE = GNU;
+        MULTI_STACK = TRUE {
+            IRQ_STACK = TRUE {
+                SYS_SIZE=2048;
+            };
+        };
+    };
+
+    STATUS = EXTENDED;
+    STARTUPHOOK = TRUE;
+    ERRORHOOK = FALSE;
+    SHUTDOWNHOOK = FALSE;
+    PRETASKHOOK = TRUE;
+    POSTTASKHOOK = TRUE;
+    USEGETSERVICEID = FALSE;
+    USEPARAMETERACCESS = FALSE;
+    USERESSCHEDULER = TRUE;
+
+    KERNEL_TYPE = ECC2;
+};
+
+TASK TaskIdle {
+    PRIORITY = 1;
+    AUTOSTART = FALSE;
+    STACK = PRIVATE {
+        SYS_SIZE = 512;
+    };
+    SCHEDULE = FULL;
+};
+
+TASK BCM8910X_SystemTask {
+    PRIORITY = 16;
+    AUTOSTART = TRUE {
+        APPMODE = OSDEFAULTAPPMODE;
+    };
+    STACK = PRIVATE {
+        SYS_SIZE = 2048;
+    };
+    SCHEDULE = FULL;
+    EVENT = SystemEvent0; /* UART Console Event */
+    EVENT = SystemEvent1; /* Late Init Event    */
+    EVENT = SystemEvent11; /* The Test Event for System Testing    */
+};
+
+TASK TaskShell {
+    PRIORITY = 12;
+    AUTOSTART = FALSE;
+    STACK = PRIVATE {
+        SYS_SIZE = 2048;
+    };
+    SCHEDULE = FULL;
+    EVENT = SystemEvent0; /* Timeout Event */
+    EVENT = SystemEvent1; /* UART Console Rx Event */
+    EVENT = SystemEvent2; /* UART Console Tx Confirmation    */
+    EVENT = SystemEvent3; /* AVB stats logging */
+    EVENT = SystemEvent11; /* The Test Event for System Testing    */
+};
+
+TASK TaskSerialIO {
+    PRIORITY = 13;
+    AUTOSTART = FALSE;
+    STACK = PRIVATE {
+        SYS_SIZE = 2048;
+    };
+    SCHEDULE = FULL;
+    EVENT = SystemEvent0; /* I2C MsgQ Event */
+    EVENT = SystemEvent1; /* I2C0 IRQ Event */
+    EVENT = SystemEvent2; /* I2C1 IRQ Event */
+    EVENT = SystemEvent3; /* I2C2 IRQ Event */
+    EVENT = SystemEvent4; /* I2C3 IRQ Event */
+    EVENT = SystemEvent5; /* VTMON Event */
+    EVENT = SystemEvent6; /* SPI0 Event */
+    EVENT = SystemEvent7; /* SPI1 Event */
+    EVENT = SystemEvent8; /* SPI2 Event */
+    EVENT = SystemEvent11; /* System Monitor event */
+};
+
+TASK CommsTask {
+    PRIORITY = 14;
+    AUTOSTART = FALSE;
+    STACK = PRIVATE {
+        SYS_SIZE = 2048;
+    };
+    SCHEDULE = FULL;
+    EVENT = SystemEvent0; /* AMAC Pkt Event */
+    EVENT = SystemEvent1; /* CAN Event */
+    EVENT = SystemEvent2; /* BRPHY 1588 Event */
+    EVENT = SystemEvent3; /* Internet Stack Timer Event */
+    EVENT = SystemEvent4; /* Xcvr link state change Event */
+    EVENT = SystemEvent5; /* AMAC Timer Event */
+};
+
+TASK FLSMGR_Server {
+    PRIORITY = 8;
+    AUTOSTART = FALSE;
+    STACK = PRIVATE {
+        SYS_SIZE = 2048;
+    };
+    SCHEDULE = FULL;
+    EVENT = SystemEvent0; /* PTM msgQ Event */
+    EVENT = SystemEvent1; /* PTM Flash op done Event */
+    EVENT = SystemEvent2; /* FLSMGR Event */
+    EVENT = SystemEvent3; /* FLSMGR Server - message queue 0 event */
+    EVENT = SystemEvent4; /* FLSMGR Server - callback indication 0 event */
+    EVENT = SystemEvent5; /* FLSMGR Server - message queue 1 event */
+    EVENT = SystemEvent6; /* FLSMGR Server - callback indication 1 event */
+    EVENT = SystemEvent7; /* FLASH0 Event */
+    EVENT = SystemEvent8; /* FLASH1 Event */
+};
+
+ISR UART_IRQHandler0 {
+    CATEGORY = 2;
+    ENTRY = "UART0";
+    PRIORITY = 0xF;
+};
+
+ISR UART_IRQHandler1 {
+    CATEGORY = 2;
+    ENTRY = "UART1";
+    PRIORITY = 0xF;
+};
+
+ISR AVT_SysSnapshotIRQHandler {
+    CATEGORY = 2;
+    ENTRY = "AVT_SYS_TS";
+    PRIORITY = 0xF;
+};
+
+ISR AVT_SysPeriodicIRQHandler {
+    CATEGORY = 2;
+    ENTRY = "AVT_SYS_SP";
+    PRIORITY = 0xF;
+};
+
+ISR ETHER_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "GMAC";
+    PRIORITY = 0xF;
+};
+
+ISR IIC_IRQHandler0 {
+    CATEGORY = 2;
+    ENTRY = "I2C02VIC";
+    PRIORITY = 0xF;
+};
+
+ISR IIC_IRQHandler1 {
+    CATEGORY = 2;
+    ENTRY = "I2C12VIC";
+    PRIORITY = 0xF;
+};
+
+ISR IIC_IRQHandler2 {
+    CATEGORY = 2;
+    ENTRY = "I2C22VIC";
+    PRIORITY = 0xF;
+};
+
+ISR IIC_IRQHandler3 {
+    CATEGORY = 2;
+    ENTRY = "I2C32VIC";
+    PRIORITY = 0xF;
+};
+
+ISR FLASH_IRQHandler0 {
+    CATEGORY = 2;
+    ENTRY = "QSPI0";
+    PRIORITY = 0xF;
+};
+
+ISR FLASH_IRQHandler1 {
+    CATEGORY = 2;
+    ENTRY = "QSPI1";
+    PRIORITY = 0xF;
+};
+
+ISR ETHER_1588_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "BRPHY1";
+    PRIORITY = 0xF;
+};
+
+ISR ETHXCVR_LinkIRQHandler0 {
+    CATEGORY = 2;
+    ENTRY = "BRPHY0";
+    PRIORITY = 0xF;
+};
+
+ISR VTMON_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "VTMON";
+    PRIORITY = 0xF;
+};
+
+ISR CCU_IRQHandler0 {
+    CATEGORY = 2;
+    ENTRY = "TMR0_CH0";
+    PRIORITY = 0xF;
+};
+
+ISR CCU_IRQHandler1 {
+    CATEGORY = 2;
+    ENTRY = "TMR0_CH1";
+    PRIORITY = 0xF;
+};
+
+ISR CCU_IRQHandler2 {
+    CATEGORY = 2;
+    ENTRY = "TMR0_CH2";
+    PRIORITY = 0xF;
+};
+
+ISR CCU_IRQHandler3 {
+    CATEGORY = 2;
+    ENTRY = "TMR0_CH3";
+    PRIORITY = 0xF;
+};
+
+ISR CCU_UDCIRQHandler {
+    CATEGORY = 2;
+    ENTRY = "TMR0_UDC";
+    PRIORITY = 0xF;
+};
+
+ISR CCU_ETRIRQHandler {
+    CATEGORY = 2;
+    ENTRY = "TMR0_ETR";
+    PRIORITY = 0xF;
+};
+
+ISR DMA_CH0_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_0";
+    PRIORITY = 0xF;
+};
+
+ISR DMA_CH1_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_1";
+    PRIORITY = 0xF;
+};
+ISR DMA_CH2_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_2";
+    PRIORITY = 0xF;
+};
+ISR DMA_CH3_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_3";
+    PRIORITY = 0xF;
+};
+ISR DMA_CH4_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_4";
+    PRIORITY = 0xF;
+};
+ISR DMA_CH5_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_5";
+    PRIORITY = 0xF;
+};
+ISR DMA_CH6_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_6";
+    PRIORITY = 0xF;
+};
+ISR DMA_CH7_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_7";
+    PRIORITY = 0xF;
+};
+
+ISR DMA_Abort_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "DMA330_ABORT";
+    PRIORITY = 0xF;
+};
+
+ISR ADC_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "ADC";
+    PRIORITY = 0xF;
+};
+
+ISR SPI0_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "SPI0";
+    PRIORITY = 0xF;
+};
+
+ISR SPI1_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "SPI1";
+    PRIORITY = 0xF;
+};
+
+ISR SPI2_IRQHandler {
+    CATEGORY = 2;
+    ENTRY = "SPI2";
+    PRIORITY = 0xF;
+};
+
+COUNTER SystemTimer {
+    MINCYCLE = 1;
+    MAXALLOWEDVALUE = 2147483647;
+    TICKSPERBASE = 1;
+    TYPE = HARDWARE;
+    SECONDSPERTICK = 1;
+};
+
+ALARM Profile_Task {
+    COUNTER = SystemTimer;
+     ACTION = ALARMCALLBACK {
+        ALARMCALLBACKNAME = "Profile_AlarmCb";
+    };
+    AUTOSTART = TRUE {
+        ALARMTIME = 320;
+        CYCLETIME = 320;
+    };
+};
+
+ALARM CONSOLE_Alarm {
+    COUNTER = SystemTimer;
+     ACTION = ALARMCALLBACK {
+        ALARMCALLBACKNAME = "CONSOLE_AlarmCb";
+    };
+    AUTOSTART = TRUE {
+        ALARMTIME = 4;
+        CYCLETIME = 4;
+    };
+};
+
+ALARM CONSOLE_LogAlarm {
+    COUNTER = SystemTimer;
+     ACTION = ALARMCALLBACK {
+        ALARMCALLBACKNAME = "CONSOLE_MsysLogAlarmCb";
+    };
+    AUTOSTART = TRUE {
+        ALARMTIME = 4;
+        CYCLETIME = 960;
+    };
+};
+
+ALARM SystemMonitor {
+    COUNTER = SystemTimer;
+     ACTION = ALARMCALLBACK {
+        ALARMCALLBACKNAME = "SYS_NotfnAlarmCb";
+    };
+    AUTOSTART = TRUE {
+        ALARMTIME = 32;
+        CYCLETIME = 32;
+    };
+};
+
+/* Reserved Events for system use, including Middlewares */
+EVENT SystemEvent0  { MASK = AUTO; };
+EVENT SystemEvent1  { MASK = AUTO; };
+EVENT SystemEvent2  { MASK = AUTO; };
+EVENT SystemEvent3  { MASK = AUTO; };
+EVENT SystemEvent4  { MASK = AUTO; };
+EVENT SystemEvent5  { MASK = AUTO; };
+EVENT SystemEvent6  { MASK = AUTO; };
+EVENT SystemEvent7  { MASK = AUTO; };
+EVENT SystemEvent8  { MASK = AUTO; };
+EVENT SystemEvent9  { MASK = AUTO; };
+EVENT SystemEvent10  { MASK = AUTO; };
+EVENT SystemEvent11  { MASK = AUTO; };
+EVENT SystemEvent12  { MASK = AUTO; };
+EVENT SystemEvent13  { MASK = AUTO; };
+EVENT SystemEvent14  { MASK = AUTO; };
+EVENT DMAEvent      { MASK = AUTO; };
+EVENT UDPTxEvent    { MASK = AUTO; };
+EVENT UDPRxEvent    { MASK = AUTO; };

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="audio">
+        <opt>ENABLE_I2S</opt>
+    </comp>
+</brcm_cfg>

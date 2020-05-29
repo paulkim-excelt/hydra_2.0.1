@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<brcm_cfg>
+    <comp name="crflib_qt">
+        <task name="CRFLibTest">
+            <priority>10</priority>
+            <autostart>false</autostart>
+            <stack>2048</stack>
+        </task>
+
+    </comp>
+</brcm_cfg>
+

@@ -1,0 +1,88 @@
+/*****************************************************************************
+ Copyright 2018 Broadcom Limited.  All rights reserved.
+
+ This program is the proprietary software of Broadcom Limited and/or its
+ licensors, and may only be used, duplicated, modified or distributed pursuant
+ to the terms and conditions of a separate, written license agreement executed
+ between you and Broadcom (an "Authorized License").
+
+ Except as set forth in an Authorized License, Broadcom grants no license
+ (express or implied), right to use, or waiver of any kind with respect to the
+ Software, and Broadcom expressly reserves all rights in and to the Software
+ and all intellectual property rights therein.  IF YOU HAVE NO AUTHORIZED
+ LICENSE, THEN YOU HAVE NO RIGHT TO USE THIS SOFTWARE IN ANY WAY, AND SHOULD
+ IMMEDIATELY NOTIFY BROADCOM AND DISCONTINUE ALL USE OF THE SOFTWARE.
+
+  Except as expressly set forth in the Authorized License,
+ 1. This program, including its structure, sequence and organization,
+    constitutes the valuable trade secrets of Broadcom, and you shall use all
+    reasonable efforts to protect the confidentiality thereof, and to use this
+    information only in connection with your use of Broadcom integrated
+    circuit products.
+
+ 2. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS"
+    AND WITH ALL FAULTS AND BROADCOM MAKES NO PROMISES, REPRESENTATIONS OR
+    WARRANTIES, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, WITH RESPECT
+    TO THE SOFTWARE.  BROADCOM SPECIFICALLY DISCLAIMS ANY AND ALL IMPLIED
+    WARRANTIES OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, FITNESS FOR A
+    PARTICULAR PURPOSE, LACK OF VIRUSES, ACCURACY OR COMPLETENESS,
+    QUIET ENJOYMENT, QUIET POSSESSION OR CORRESPONDENCE TO DESCRIPTION.
+    YOU ASSUME THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+    SOFTWARE.
+
+ 3. TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BROADCOM OR ITS
+    LICENSORS BE LIABLE FOR (i) CONSEQUENTIAL, INCIDENTAL, SPECIAL, INDIRECT,
+    OR EXEMPLARY DAMAGES WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATING TO
+    YOUR USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF BROADCOM HAS BEEN
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGES; OR (ii) ANY AMOUNT IN EXCESS
+    OF THE AMOUNT ACTUALLY PAID FOR THE SOFTWARE ITSELF OR U.S. $1, WHICHEVER
+    IS GREATER. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF
+    ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+******************************************************************************/
+#ifndef OPTICALFLOW_INTERNAL_H
+#define OPTICALFLOW_INTERNAL_H
+
+
+#include <openvx_lib.h>
+
+#define OPTICALFLOW_UNIQUE_ID (1384010169UL)
+
+#define OPTICALFLOW_NUM_PP_CORES (2UL)
+
+#define OPTICALFLOW_MAX_DATA_ENTRIES (7UL)
+
+#define OPTICALFLOW_TEMP_STORAGE_IDX (0UL)
+#define OPTICALFLOW_TEMP_STORAGE_SIZE (84480UL)
+
+#define OPTICALFLOW_CURRIMAGE_IMG_IDX (1UL)
+#define OPTICALFLOW_CURRIMAGE_IMG_SIZE (921600UL)
+
+
+#define OPTICALFLOW_PREVPYRAMID_PYRAMID_IDX (5UL)
+#define OPTICALFLOW_PREVPYRAMID_PYRAMID_SIZE (1221120UL)
+
+#define OPTICALFLOW_CURRPYRAMID_PYRAMID_IDX (6UL)
+#define OPTICALFLOW_CURRPYRAMID_PYRAMID_SIZE (1221120UL)
+
+
+#define OPTICALFLOW_CORNERS_ARRAY_IDX (2UL)
+typedef OpenVXLib_KeyPoint OPTICALFLOW_CORNERS_ARRAY_TYPE;
+#define OPTICALFLOW_CORNERS_MAX_COUNT (3476UL)
+#define DEFINE_OPTICALFLOW_CORNERS(aName)\
+    OpenVXLib_KeyPoint aName[3476UL]
+
+#define OPTICALFLOW_PREVPOINTS_ARRAY_IDX (3UL)
+typedef OpenVXLib_KeyPoint OPTICALFLOW_PREVPOINTS_ARRAY_TYPE;
+#define OPTICALFLOW_PREVPOINTS_MAX_COUNT (3476UL)
+#define DEFINE_OPTICALFLOW_PREVPOINTS(aName)\
+    OpenVXLib_KeyPoint aName[3476UL]
+
+#define OPTICALFLOW_CURRPOINTS_ARRAY_IDX (4UL)
+typedef OpenVXLib_KeyPoint OPTICALFLOW_CURRPOINTS_ARRAY_TYPE;
+#define OPTICALFLOW_CURRPOINTS_MAX_COUNT (3476UL)
+#define DEFINE_OPTICALFLOW_CURRPOINTS(aName)\
+    OpenVXLib_KeyPoint aName[3476UL]
+
+
+
+#endif /* OPTICALFLOW_INTERNAL_H */
